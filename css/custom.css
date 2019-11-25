@@ -1,0 +1,58 @@
+a, a:hover { color: #1450A8;}
+
+/* Map map */
+#mapCanvas img {
+  max-width: none;
+}
+
+.leaflet-google-layer{
+    z-index: 0 !important;
+}
+
+.leaflet-map-pane{
+    z-index: 100;
+}
+
+.info {
+  font-family: 'Lato', sans-serif;
+  padding: 6px 8px;
+  background: #ffffff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+.info h4 {
+  margin: 0 0 5px;
+  color: #777;
+}
+
+.results-count {
+  font-family: 'Lato', sans-serif;
+  padding: 6px 8px;
+  background: #ffffff;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+
+.filter-box { 
+  margin-top: 5px;
+  height: 15px; 
+  width: 15px;  
+  display: inline-block;
+  *border-right-width: 4px;
+  *border-bottom-width: 4px;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
+  -webkit-background-clip: padding-box;
+     -moz-background-clip: padding;
+          background-clip: padding-box; 
+}
+
+.filter-yellow { background-color: #FFCC0D; }
+.filter-green { background-color: #10AC03; }
+.filter-blue { background-color: #1653A8; }
+.filter-purple { background-color: #6614AC; }
+.filter-red { background-color: #CC2537; }
+.filter-orange { background-color: #CD8518; }
+.filter-grey { background-color: #7B7B7B; }

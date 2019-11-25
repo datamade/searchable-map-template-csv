@@ -1,0 +1,25 @@
+<h4>
+    <%= obj.facility_name %>
+</h4>             
+<p>
+    <%= formatAddress(obj) %><br />
+    <%= obj.phone %><br />
+
+    <% if (obj.url) { %>
+        <a href='<%= obj.url %>' target='_blank'>Website</a>
+    <% } %>
+</p>
+
+<% if (obj.cost) { %>
+    <p>
+        <strong>Cost</strong><br />
+        <%= obj.cost %>
+    </p>
+<% } %>
+
+<% if (obj.hours) { %>
+    <p>
+        <strong>Hours</strong><br />
+        <%= obj.hours %>
+    </p>
+<% } %>

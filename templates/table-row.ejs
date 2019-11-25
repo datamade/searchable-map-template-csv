@@ -1,0 +1,15 @@
+<tr>                  
+    <td>
+        <%= obj.facility_name %>
+    </td>                  
+    <td>
+        <%= formatAddress(obj) %><br />
+        (<a href='http://maps.google.com/?q=<%= formatAddress(obj) %>' target='_blank'>Get directions</a>)
+    </td> 
+    <td>
+        <%= obj.phone %>
+    </td>                 
+    <td>
+        <%= obj.hours %>
+    </td>
+</tr>
