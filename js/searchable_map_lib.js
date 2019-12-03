@@ -15,6 +15,7 @@ var SearchableMapLib = {
   geoSearch: '',
   radius: '',
   csvData: null,
+  currentResults: null,
   resultsCount: 0,
   currentPinpoint: null,
   lastClickedLayer: null,
@@ -165,6 +166,10 @@ var SearchableMapLib = {
   },
 
   renderMap: function() {
+
+      $.each( SearchableMapLib.currentResults, function( key, value ) {
+          L.marker([value["Latitude"], value["Longitude"]]).addTo(SearchableMapLib.map);
+      });
       // var layerOpts = {
       //   user_name: SearchableMapLib.userName,
       //   type: 'SearchableMap',
@@ -286,7 +291,11 @@ var SearchableMapLib = {
      // Devise SQL calls for geosearch and language search.
     var address = $("#search-address").val();
 
+    SearchableMapLib.currentResults = SearchableMapLib.csvData;
     if(SearchableMapLib.currentPinpoint != null && address != '') {
+        var point = turf.point([SearchableMapLib.currentPinpoint[1], SearchableMapLib.currentPinpoint[0]]);
+        var buffered = turf.buffer(point, SearchableMapLib.radius, {units: 'meters'});
+        console.log(buffered)
       // SearchableMapLib.geoSearch = " AND ST_DWithin(ST_SetSRID(ST_POINT(" + SearchableMapLib.currentPinpoint[1] + ", " + SearchableMapLib.currentPinpoint[0] + "), 4326)::geography, the_geom::geography, " + SearchableMapLib.radius + ")";
     }
     else {
