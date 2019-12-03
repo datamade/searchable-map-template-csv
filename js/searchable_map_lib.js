@@ -278,9 +278,9 @@ var SearchableMapLib = {
   },
 
   clearSearch: function(){
-    if (SearchableMapLib.sublayer) {
-      SearchableMapLib.sublayer.remove();
-    }
+    // if (SearchableMapLib.sublayer) {
+    //   SearchableMapLib.sublayer.remove();
+    // }
     if (SearchableMapLib.centerMark)
       SearchableMapLib.map.removeLayer( SearchableMapLib.centerMark );
     if (SearchableMapLib.radiusCircle)
@@ -295,7 +295,7 @@ var SearchableMapLib = {
     if(SearchableMapLib.currentPinpoint != null && address != '') {
         var point = turf.point([SearchableMapLib.currentPinpoint[1], SearchableMapLib.currentPinpoint[0]]);
         var buffered = turf.buffer(point, SearchableMapLib.radius, {units: 'meters'});
-        console.log(buffered)
+        console.log(buffered);
       // SearchableMapLib.geoSearch = " AND ST_DWithin(ST_SetSRID(ST_POINT(" + SearchableMapLib.currentPinpoint[1] + ", " + SearchableMapLib.currentPinpoint[0] + "), 4326)::geography, the_geom::geography, " + SearchableMapLib.radius + ")";
     }
     else {
@@ -336,7 +336,8 @@ var SearchableMapLib = {
   },
 
   addCircle: function() {
-    SearchableMapLib.radiusCircle = new L.circle(SearchableMapLib.currentPinpoint, SearchableMapLib.radius, {
+    SearchableMapLib.radiusCircle = L.circle(SearchableMapLib.currentPinpoint, {
+        radius: SearchableMapLib.radius,
         fillColor:'#1d5492',
         fillOpacity:'0.1',
         stroke: false,
