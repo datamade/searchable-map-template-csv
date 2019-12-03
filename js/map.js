@@ -10,11 +10,8 @@ $(function() {
   SearchableMapLib.initialize({
     map_centroid: [41.85754, -87.66231],
     defaultZoom:  11,
-    layerUrl:     'https://datamade.Turf.com/api/v2/viz/3d861410-d645-4c10-a19d-ef01c1135441/viz.json',
-    tableName:    'flu_shot_locations_2014_present_2019_2020_season',
-    userName:     'datamade',
-    fields :      'SearchableMap_id, the_geom, cost, facility_name, hours, phone, street1, street2, city, state, url',
-    listOrderBy: 'facility_name',
+    csvPath: 'data/chicago-flu-shot-locations-2019.csv',
+    idField: "Facility ID",
     recordName: 'flu shot location',
     recordNamePlural: 'flu shot locations',
     radius: 1610,
