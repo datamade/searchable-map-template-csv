@@ -15,7 +15,9 @@ var SearchableMapLib = {
   geoSearch: '',
   radius: '',
   csvData: null,
+  geojsonData: null,
   currentResults: null,
+  currentResultsLayer: null,
   resultsCount: 0,
   currentPinpoint: null,
   lastClickedLayer: null,
@@ -105,19 +107,20 @@ var SearchableMapLib = {
       SearchableMapLib.results_div.addTo(SearchableMapLib.map);
       SearchableMapLib.info.addTo(SearchableMapLib.map);
 
-      $.when($.get(SearchableMapLib.csvPath)).then(
+      $.when($.get('data/chicago-flu-shot-locations-2019.geojson')).then(
       function (data) {
-          SearchableMapLib.csvData = $.csv.toObjects(data, SearchableMapLib.csv_options);
-          console.log('loaded csv data');
-          console.log(SearchableMapLib.csvData);
+
+          SearchableMapLib.geojsonData = JSON.parse(data);
+          console.log('loaded geojson data');
+          console.log(SearchableMapLib.geojsonData);
 
         var num = $.address.parameter('modal_id');
 
-        if (typeof num !== 'undefined') {
-          $.grep(SearchableMapLib.csvData, function(v) {
-            SearchableMapLib.modalPop(v[SearchableMapLib.idField] === num);
-          });
-        }
+        // if (typeof num !== 'undefined') {
+        //   $.grep(SearchableMapLib.csvData, function(v) {
+        //     SearchableMapLib.modalPop(v[SearchableMapLib.idField] === num);
+        //   });
+        // }
 
         SearchableMapLib.doSearch();
 
@@ -167,9 +170,10 @@ var SearchableMapLib = {
 
   renderMap: function() {
 
-      $.each( SearchableMapLib.currentResults, function( key, value ) {
-          L.marker([value["Latitude"], value["Longitude"]]).addTo(SearchableMapLib.map);
-      });
+    SearchableMapLib.currentResultsLayer.addTo(SearchableMapLib.map)
+      // $.each( SearchableMapLib.currentResults, function( key, value ) {
+      //     L.marker([value["Latitude"], value["Longitude"]]).addTo(SearchableMapLib.map);
+      // });
       // var layerOpts = {
       //   user_name: SearchableMapLib.userName,
       //   type: 'SearchableMap',
@@ -278,9 +282,9 @@ var SearchableMapLib = {
   },
 
   clearSearch: function(){
-    // if (SearchableMapLib.sublayer) {
-    //   SearchableMapLib.sublayer.remove();
-    // }
+    if (SearchableMapLib.currentResultsLayer) {
+      SearchableMapLib.currentResultsLayer.remove();
+    }
     if (SearchableMapLib.centerMark)
       SearchableMapLib.map.removeLayer( SearchableMapLib.centerMark );
     if (SearchableMapLib.radiusCircle)
@@ -291,16 +295,24 @@ var SearchableMapLib = {
      // Devise SQL calls for geosearch and language search.
     var address = $("#search-address").val();
 
-    SearchableMapLib.currentResults = SearchableMapLib.csvData;
+    SearchableMapLib.currentResults = SearchableMapLib.geojsonData;
     if(SearchableMapLib.currentPinpoint != null && address != '') {
         var point = turf.point([SearchableMapLib.currentPinpoint[1], SearchableMapLib.currentPinpoint[0]]);
         var buffered = turf.buffer(point, SearchableMapLib.radius, {units: 'meters'});
-        console.log(buffered);
+
+        SearchableMapLib.currentResults = turf.pointsWithinPolygon(SearchableMapLib.currentResults, buffered);
+
+
+        // ptsWithin.addTo(SearchableMapLib.map)
+        console.log('found points within')
+        console.log(SearchableMapLib.currentResults);
       // SearchableMapLib.geoSearch = " AND ST_DWithin(ST_SetSRID(ST_POINT(" + SearchableMapLib.currentPinpoint[1] + ", " + SearchableMapLib.currentPinpoint[0] + "), 4326)::geography, the_geom::geography, " + SearchableMapLib.radius + ")";
     }
     else {
       SearchableMapLib.geoSearch = ''
     }
+
+    SearchableMapLib.currentResultsLayer = L.geoJSON(SearchableMapLib.currentResults);
 
     // SearchableMapLib.whereClause = " WHERE the_geom is not null ";
 
