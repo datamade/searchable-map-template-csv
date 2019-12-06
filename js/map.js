@@ -10,11 +10,13 @@ $(function() {
   SearchableMapLib.initialize({
     map_centroid: [41.85754, -87.66231],
     defaultZoom:  11,
-    csvPath: 'data/chicago-flu-shot-locations-2019.csv',
+    filePath: 'data/chicago-flu-shot-locations-2019.geojson',
+    fileType: 'geojson',
     idField: "Facility ID",
     recordName: 'flu shot location',
     recordNamePlural: 'flu shot locations',
     radius: 1610,
+    debug: true,
   });
 
   var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search-address'));
@@ -69,5 +71,5 @@ $(function() {
 });
 
 function formatAddress(prop) {
-    return prop.street1 + " " + prop.street2 + " " + prop.city + " " + prop.state;
+    return prop["Street1"] + " " + prop["Street2"] + " " + prop["City"] + " " + prop["State"];
 }

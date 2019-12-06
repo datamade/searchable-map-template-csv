@@ -1,25 +1,25 @@
 <h4>
-    <%= obj.facility_name %>
+    <%= obj["Facility Name"] %>
 </h4>             
 <p>
     <%= formatAddress(obj) %><br />
-    <%= obj.phone %><br />
+    <%= obj["Phone"] %><br />
 
-    <% if (obj.url) { %>
-        <a href='<%= obj.url %>' target='_blank'>Website</a>
+    <% if (obj["URL"]) { %>
+        <a href='<%= obj["URL"] %>' target='_blank'>Website</a>
     <% } %>
 </p>
 
-<% if (obj.cost) { %>
+<% if (obj["Cost"]) { %>
     <p>
         <strong>Cost</strong><br />
-        <%= obj.cost %>
+        <%= obj["Cost"] %>
     </p>
 <% } %>
 
-<% if (obj.hours) { %>
+<% if (obj["Hours"]) { %>
     <p>
         <strong>Hours</strong><br />
-        <%= obj.hours %>
+        <%= obj["Hours"] %>
     </p>
 <% } %>

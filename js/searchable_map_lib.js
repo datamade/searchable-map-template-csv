@@ -4,12 +4,14 @@ var SearchableMapLib = {
   // parameters to be defined on initialize() 
   map_centroid: [],
   defaultZoom: 9,
-  csvPath: '',
+  filePath: '',
+  fileType: '',
   csvOptions: '',
   idField: '',
   listOrderBy: '',
   recordName: '',
   recordNamePlural: '',
+  debug: false,
 
   // internal properties
   geoSearch: '',
@@ -18,7 +20,6 @@ var SearchableMapLib = {
   geojsonData: null,
   currentResults: null,
   currentResultsLayer: null,
-  resultsCount: 0,
   currentPinpoint: null,
   lastClickedLayer: null,
 
@@ -27,13 +28,18 @@ var SearchableMapLib = {
 
     SearchableMapLib.map_centroid = options.map_centroid || [41.881832, -87.623177],
     SearchableMapLib.defaultZoom = options.defaultZoom || 9,
-    SearchableMapLib.csvPath = options.csvPath || "",
+    SearchableMapLib.filePath = options.filePath || "",
+    SearchableMapLib.fileType = options.fileType || "csv",
     SearchableMapLib.csvOptions = options.csvOptions || {separator: ',', delimiter: '"'},
     SearchableMapLib.idField = options.idField || "id",
     SearchableMapLib.listOrderBy = options.listOrderBy || "",
     SearchableMapLib.recordName = options.recordName || "result",
     SearchableMapLib.recordNamePlural = options.recordNamePlural || "results",
-    SearchableMapLib.radius = options.radius || 805,    
+    SearchableMapLib.radius = options.radius || 805,
+    SearchableMapLib.debug = options.debug || false
+
+    if (SearchableMapLib.debug)
+      console.log('debug mode is on');
 
     //reset filters
     $("#search-address").val(SearchableMapLib.convertToPlainString($.address.parameter('address')));
@@ -70,7 +76,7 @@ var SearchableMapLib = {
 
       // method that we will use to update the control based on feature properties passed
       var hover_template;
-      $.get( "/templates/hover.ejs", function( template ) {
+      $.get( "/templates/hover.ejs?1", function( template ) {
         hover_template = template;
       });
       SearchableMapLib.info.update = function (props) {
@@ -107,12 +113,26 @@ var SearchableMapLib = {
       SearchableMapLib.results_div.addTo(SearchableMapLib.map);
       SearchableMapLib.info.addTo(SearchableMapLib.map);
 
-      $.when($.get('data/chicago-flu-shot-locations-2019.geojson')).then(
+      $.when($.get(SearchableMapLib.filePath)).then(
       function (data) {
 
+        if (SearchableMapLib.fileType == 'geojson') {
+          if (SearchableMapLib.debug) console.log('loading geojson');
           SearchableMapLib.geojsonData = JSON.parse(data);
-          console.log('loaded geojson data');
+        }
+        else if (SearchableMapLib.fileType == 'csv' ){
+          // convert CSV
+          if (SearchableMapLib.debug) console.log('converting to csv');
+        }
+        else {
+          // error!
+          console.log ("fileType must be 'csv' or 'geojson'")
+        }
+
+        if (SearchableMapLib.debug) {
+          console.log('data loaded:');
           console.log(SearchableMapLib.geojsonData);
+        }
 
         var num = $.address.parameter('modal_id');
 
@@ -170,46 +190,10 @@ var SearchableMapLib = {
 
   renderMap: function() {
 
-    SearchableMapLib.currentResultsLayer.addTo(SearchableMapLib.map)
-      // $.each( SearchableMapLib.currentResults, function( key, value ) {
-      //     L.marker([value["Latitude"], value["Longitude"]]).addTo(SearchableMapLib.map);
-      // });
-      // var layerOpts = {
-      //   user_name: SearchableMapLib.userName,
-      //   type: 'SearchableMap',
-      //   SearchableMap_logo: false,
-      //   sublayers: [
-      //     {
-      //       sql: "SELECT * FROM " + SearchableMapLib.tableName + SearchableMapLib.whereClause,
-      //       Turfcss: $('#maps-styles').html().trim(),
-      //       interactivity: SearchableMapLib.fields
-      //     }
-      //   ]
-      // }
+    SearchableMapLib.currentResultsLayer.addTo(SearchableMapLib.map);
 
-      // SearchableMapLib.dataLayer = SearchableMap.createLayer(SearchableMapLib.map, layerOpts, { https: true })
-      //   .addTo(SearchableMapLib.map)
-      //   .done(function(layer) {
-      //     SearchableMapLib.sublayer = layer.getSubLayer(0);
-      //     SearchableMapLib.sublayer.setInteraction(true);
-      //     SearchableMapLib.sublayer.on('featureOver', function(e, latlng, pos, data, subLayerIndex) {
-      //       $('#mapCanvas div').css('cursor','pointer');
-      //       SearchableMapLib.info.update(data);
-      //     })
-      //     SearchableMapLib.sublayer.on('featureOut', function(e, latlng, pos, data, subLayerIndex) {
-      //       $('#mapCanvas div').css('cursor','inherit');
-      //       SearchableMapLib.info.clear();
-      //     })
-      //     SearchableMapLib.sublayer.on('featureClick', function(e, latlng, pos, data) {
-      //         SearchableMapLib.modalPop(data);
-      //     })
-      //     SearchableMapLib.sublayer.on('error', function(err) {
-      //       console.log('error: ' + err);
-      //     })
-      //   }).on('error', function(e) {
-      //     console.log('ERROR')
-      //     console.log(e)
-      //   });
+    //hover - SearchableMapLib.info.update(data);
+    //click - SearchableMapLib.modalPop(data);
   },
 
   renderList: function() {
@@ -252,32 +236,32 @@ var SearchableMapLib = {
   },
 
   getResults: function() {
-    // var sql = new SearchableMap.SQL({ user: SearchableMapLib.userName });
+    if (SearchableMapLib.debug) {
+      console.log('results length')
+      console.log(SearchableMapLib.currentResults.features.length)
+    }
+    
+    var recname = SearchableMapLib.recordNamePlural;
+    if (SearchableMapLib.currentResults.features.length == 1) {
+        recname = SearchableMapLib.recordName;
+    }
 
-    // sql.execute("SELECT count(*) FROM " + SearchableMapLib.tableName + SearchableMapLib.whereClause)
-    //   .done(function(data) {
-    //     SearchableMapLib.resultsCount = data.rows[0]["count"];
-    //     SearchableMapLib.results_div.update(SearchableMapLib.resultsCount);
+    SearchableMapLib.results_div.update(SearchableMapLib.currentResults.features.length);
 
-    //     var recname = SearchableMapLib.recordNamePlural;
-    //     if (SearchableMapLib.resultsCount == 1) {
-    //         recname = SearchableMapLib.recordName;
-    //     }
-
-    //     $('#list-result-count').html(SearchableMapLib.resultsCount.toLocaleString('en') + ' ' + recname + ' found')
-    //   }
-    // );
+    $('#list-result-count').html(SearchableMapLib.currentResults.features.length.toLocaleString('en') + ' ' + recname + ' found')
   },
 
   modalPop: function(data) {
-    console.log('launch modal')
-    console.log(data);
+    if (SearchableMapLib.debug) {
+      console.log('launch modal')
+      console.log(data);
+    }
     var modal_content;
-    $.get( "/templates/popup.ejs", function( template ) {
+    $.get( "/templates/popup.ejs?1", function( template ) {
         modal_content = ejs.render(template, {obj: data});
         $('#modal-pop').modal();
         $('#modal-main').html(modal_content);
-        $.address.parameter('modal_id', data.SearchableMap_id);
+        $.address.parameter('modal_id', data[SearchableMapLib.idField]);
       });
   },
 
@@ -302,27 +286,45 @@ var SearchableMapLib = {
 
         SearchableMapLib.currentResults = turf.pointsWithinPolygon(SearchableMapLib.currentResults, buffered);
 
-
-        // ptsWithin.addTo(SearchableMapLib.map)
-        console.log('found points within')
-        console.log(SearchableMapLib.currentResults);
-      // SearchableMapLib.geoSearch = " AND ST_DWithin(ST_SetSRID(ST_POINT(" + SearchableMapLib.currentPinpoint[1] + ", " + SearchableMapLib.currentPinpoint[0] + "), 4326)::geography, the_geom::geography, " + SearchableMapLib.radius + ")";
+        if (SearchableMapLib.debug) {
+          console.log('found points within')
+          console.log(SearchableMapLib.currentResults);
+        }
     }
     else {
       SearchableMapLib.geoSearch = ''
     }
 
-    SearchableMapLib.currentResultsLayer = L.geoJSON(SearchableMapLib.currentResults);
+    SearchableMapLib.currentResultsLayer = L.geoJSON(SearchableMapLib.currentResults, {
+        onEachFeature: onEachFeature
+      }
+    );
 
-    // SearchableMapLib.whereClause = " WHERE the_geom is not null ";
+    //messy - clean this up later
+    function onEachFeature(feature, layer) {
+      layer.on({
+        mouseover: hoverFeature,
+        mouseout: removeHover,
+        click: modalPop
+      });
+    }
+
+    function hoverFeature(e) {
+      SearchableMapLib.info.update(e.target.feature.properties);
+    }
+
+    function removeHover(e) {
+      SearchableMapLib.info.update();
+    }
+
+    function modalPop(e) {
+      SearchableMapLib.modalPop(e.target.feature.properties)
+    }
 
     //-----custom filters-----
 
     // -----end of custom filters-----
 
-    if (SearchableMapLib.geoSearch != "") {
-      SearchableMapLib.whereClause += SearchableMapLib.geoSearch;
-    }
   },
 
   setZoom: function() {
