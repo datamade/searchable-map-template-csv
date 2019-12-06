@@ -1,15 +1,15 @@
 <tr>                  
     <td>
-        <%= obj.facility_name %>
+        <%= obj["Facility Name"] %>
     </td>                  
     <td>
         <%= formatAddress(obj) %><br />
         (<a href='http://maps.google.com/?q=<%= formatAddress(obj) %>' target='_blank'>Get directions</a>)
     </td> 
     <td>
-        <%= obj.phone %>
+        <%= obj["Phone"] %>
     </td>                 
     <td>
-        <%= obj.hours %>
+        <%= obj["Hours"] %>
     </td>
 </tr>

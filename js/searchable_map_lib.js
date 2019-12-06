@@ -198,41 +198,21 @@ var SearchableMapLib = {
 
   renderList: function() {
     var results = $('#results-list');
+    results.empty();
 
-    // if ((SearchableMapLib.whereClause == ' WHERE the_geom is not null AND ') || (SearchableMapLib.whereClause == ' WHERE the_geom is not null ')) {
-    //   SearchableMapLib.whereClause = '';
-    // }
+    if (SearchableMapLib.currentResults.features.length == 0) {
+      results.append("<p class='no-results'>No results. Please broaden your search.</p>");
+    }
+    else {
+      var row_content;
+      $.get( "/templates/table-row.ejs?2", function( template ) {
+          for (idx in SearchableMapLib.currentResults.features) {
+            row_content = ejs.render(template, {obj: SearchableMapLib.currentResults.features[idx].properties});
 
-    // var sortClause = ' ';
-    // if (SearchableMapLib.listOrderBy != '')
-    //   sortClause = ' ORDER BY ' + SearchableMapLib.listOrderBy;
-
-    // var sql_ex = "SELECT " + SearchableMapLib.fields + " FROM " + SearchableMapLib.tableName + SearchableMapLib.whereClause + sortClause;
-    // // console.log(sql_ex);
-
-    // results.empty();
-    // sql.execute(sql_ex)
-    //   .done(function(listData) {
-    //     var obj_array = listData.rows;
-
-    //     // console.log(obj_array);
-    //     if (listData.rows.length == 0) {
-    //       results.append("<p class='no-results'>No results. Please broaden your search.</p>");
-    //     }
-    //     else {
-    //       var row_content;
-    //       $.get( "/templates/table-row.ejs?4", function( template ) {
-    //           for (idx in obj_array) {
-
-    //             row_content = ejs.render(template, {obj: obj_array[idx]});
-
-    //             results.append(row_content);
-    //           }
-    //         });
-    //       }
-    // }).error(function(errors) {
-    //   console.log("errors:" + errors);
-    // });
+            results.append(row_content);
+          }
+        });
+      }
   },
 
   getResults: function() {
@@ -240,7 +220,7 @@ var SearchableMapLib = {
       console.log('results length')
       console.log(SearchableMapLib.currentResults.features.length)
     }
-    
+
     var recname = SearchableMapLib.recordNamePlural;
     if (SearchableMapLib.currentResults.features.length == 1) {
         recname = SearchableMapLib.recordName;
