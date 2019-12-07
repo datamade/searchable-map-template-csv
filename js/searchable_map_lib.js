@@ -115,6 +115,7 @@ var SearchableMapLib = {
 
       $.when($.get(SearchableMapLib.filePath, null, 'text')).then(
       function (data) {
+        console.log(data)
 
         if (SearchableMapLib.fileType == 'geojson') {
           if (SearchableMapLib.debug) console.log('loading geojson');
