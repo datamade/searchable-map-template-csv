@@ -14,7 +14,6 @@ var SearchableMapLib = {
   debug: false,
 
   // internal properties
-  geoSearch: '',
   radius: '',
   csvData: null,
   geojsonData: null,
@@ -260,7 +259,6 @@ var SearchableMapLib = {
   },
 
   createSQL: function() {
-     // Devise SQL calls for geosearch and language search.
     var address = $("#search-address").val();
 
     SearchableMapLib.currentResults = SearchableMapLib.geojsonData;
@@ -275,11 +273,11 @@ var SearchableMapLib = {
           console.log(SearchableMapLib.currentResults);
         }
     }
-    else {
-      SearchableMapLib.geoSearch = ''
-    }
 
     SearchableMapLib.currentResultsLayer = L.geoJSON(SearchableMapLib.currentResults, {
+        pointToLayer: function (feature, latlng) {
+          return L.marker(latlng, {icon: redIcon} );
+        },
         onEachFeature: onEachFeature
       }
     );
