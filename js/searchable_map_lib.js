@@ -192,11 +192,7 @@ var SearchableMapLib = {
   },
 
   renderMap: function() {
-
     SearchableMapLib.currentResultsLayer.addTo(SearchableMapLib.map);
-
-    //hover - SearchableMapLib.info.update(data);
-    //click - SearchableMapLib.modalPop(data);
   },
 
   renderList: function() {
@@ -261,7 +257,9 @@ var SearchableMapLib = {
   createSQL: function() {
     var address = $("#search-address").val();
 
-    SearchableMapLib.currentResults = SearchableMapLib.geojsonData;
+    // this is a fun hack to do a deep copy of the GeoJSON data
+    SearchableMapLib.currentResults = JSON.parse(JSON.stringify(SearchableMapLib.geojsonData));
+
     if(SearchableMapLib.currentPinpoint != null && address != '') {
         var point = turf.point([SearchableMapLib.currentPinpoint[1], SearchableMapLib.currentPinpoint[0]]);
         var buffered = turf.buffer(point, SearchableMapLib.radius, {units: 'meters'});
@@ -274,9 +272,37 @@ var SearchableMapLib = {
         }
     }
 
+    //-----custom filters-----
+
+    //search for pharmacy
+    var customFilters = [];
+    if ( $("#cbType1").is(':checked')) {
+      customFilters.push('r.properties["Type"] === "Pharmacy"');
+    }
+    if ( $("#cbType2").is(':checked')) {
+      customFilters.push('r.properties["Type"] === "Government"');
+    }
+    if ( $("#cbType3").is(':checked')) {
+      customFilters.push('r.properties["Type"] === "Other"');
+    }
+    if ( $("#cbType4").is(':checked')) {
+      customFilters.push('r.properties["Type"] === "Event"');
+    }
+
+    SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
+        var filter = "";
+        for (var i = 0; i < customFilters.length; i++) { 
+          filter += customFilters[i] + " || " 
+        }
+        filter = filter.substring(0, filter.length - 3);
+        return eval(filter);
+    });
+
+    // -----end of custom filters-----
+
     SearchableMapLib.currentResultsLayer = L.geoJSON(SearchableMapLib.currentResults, {
         pointToLayer: function (feature, latlng) {
-          return L.marker(latlng, {icon: redIcon} );
+          return L.marker(latlng, {icon: SearchableMapLib.getIcon(feature.properties["Type"])} );
         },
         onEachFeature: onEachFeature
       }
@@ -302,10 +328,6 @@ var SearchableMapLib = {
     function modalPop(e) {
       SearchableMapLib.modalPop(e.target.feature.properties)
     }
-
-    //-----custom filters-----
-
-    // -----end of custom filters-----
 
   },
 
@@ -350,9 +372,11 @@ var SearchableMapLib = {
   },
 
   // -----custom functions-----
-  getColor: function(docket_number){
-    if (docket_number != null) return 'red';
-    return 'blue';
+  getIcon: function(type){
+    if (type == "Pharmacy") return redIcon;
+    if (type == "Government") return blueIcon;
+    if (type == "Other") return yellowIcon;
+    return greenIcon;
   },
   // -----end custom functions-----
 
