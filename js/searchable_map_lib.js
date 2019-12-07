@@ -113,13 +113,16 @@ var SearchableMapLib = {
       SearchableMapLib.results_div.addTo(SearchableMapLib.map);
       SearchableMapLib.info.addTo(SearchableMapLib.map);
 
-      $.when($.get(SearchableMapLib.filePath, null, 'text')).then(
+      $.when($.get(SearchableMapLib.filePath)).then(
       function (data) {
-        console.log(data)
 
         if (SearchableMapLib.fileType == 'geojson') {
           if (SearchableMapLib.debug) console.log('loading geojson');
-          SearchableMapLib.geojsonData = JSON.parse(data);
+          // sometimes the server returns the file as text and we have to parse it
+          if (typeof data == 'string')
+            SearchableMapLib.geojsonData = JSON.parse(data);
+          else
+            SearchableMapLib.geojsonData = data
         }
         else if (SearchableMapLib.fileType == 'csv' ){
           // convert CSV
