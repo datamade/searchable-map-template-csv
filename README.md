@@ -4,7 +4,7 @@
 
 You want to put your data on a searchable, filterable map. This is a free, open source template using Turf to help you do it. This template is a successor to Derek Eder's [Fusion Tables Map Template](https://github.com/derekeder/FusionTable-Map-Template).
 
-**[See the working demo &raquo;](https://Turf-template.netlify.com/)**
+**[See the working demo &raquo;](https://searchable-map-template-turf.netlify.com/)**
 
 ![Turf Template](https://raw.githubusercontent.com/datamade/TurfTemplate/master/images/screenshot.jpg)
 
