@@ -113,7 +113,7 @@ var SearchableMapLib = {
       SearchableMapLib.results_div.addTo(SearchableMapLib.map);
       SearchableMapLib.info.addTo(SearchableMapLib.map);
 
-      $.when($.get(SearchableMapLib.filePath)).then(
+      $.when($.get(SearchableMapLib.filePath, null, 'text')).then(
       function (data) {
 
         if (SearchableMapLib.fileType == 'geojson') {
