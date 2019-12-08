@@ -1,15 +1,11 @@
 function convertCsvToGeojson(data) {
-  var csvObject = CSVToArray(data);
+  var csvObject = $.csv.toArrays(data);
   var latName = getColName(csvObject, ['lat', 'Lat', 'LAT', 'latitude', 'Latitude', 'LATITUDE']);
   var lonName = getColName(csvObject, ['lng', 'Lng', 'LNG', 'lon', 'Lon', 'LON', 'longitude', 'Longitude', 'LONGITUDE']);
 
-  var result;
-  GeoJSON.parse(latLonColumnsToNumbers(massageData(csvObject), latName, lonName), {
+  return GeoJSON.parse(latLonColumnsToNumbers(massageData(csvObject), latName, lonName), {
     Point: [latName, lonName]
-  }, function(geojson) {
-    result = geojson;
   });
-  return result;
 }
 
 function massageData(data) {
