@@ -55,10 +55,9 @@ Follow the steps below and you'll be in business with your own map.
 
 1. Download or clone this project and fire up your text editor of choice. Open up `/js/map.js` and set your map options in the `SearchableMapLib.initialize` function:
   - `map_centroid` -  the lat/long you want your map to center on ([find yours here](https://getlatlong.net/))
-  - `layerUrl` - The visualization layer from Turf. It should look like this: `https://datamade.Turf.com/api/v2/viz/3d861410-d645-4c10-a19d-ef01c1135441/viz.json`
-  - `tableName` - The table in Turf containing your map data.
-  - `userName` - Your Turf user name.
-  - `fields` - A comma separated list of fields in your Turf table that you want available for the map. You must include at minimum `SearchableMap_id` and `the_geom`. Columns in Turf are converted to lower case with underscores (`First Name` => `first_name`), so make sure they are correct.
+  - `filePath` - Path to your map data file. This file needs to be in csv or geojson format and placed in the `data` folder
+  - `fileType` - Set if you are loading in a `csv` or `geojson` file
+  - `idField` - The column name for the unique identifier for each of your rows
 2. Replace the API key on this line of `index.html` with yours: `<script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places&key=[YOUR KEY HERE]"></script>`
 3. Edit the templates in the `templates` folder for how you want your data displayed. These templates use EJS, which allows the display of your variables with HTML, as well as conditional logic. [Documentation is here](https://ejs.co/#docs). 
   - `/templates/hover.ejs` - template for when you hover over a dot on the map
