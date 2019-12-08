@@ -88,7 +88,7 @@ SearchableMapLib.initialize({
 | Option           | Default value           | Notes                                                                                                           |
 |------------------|-------------------------|-----------------------------------------------------------------------------------------------------------------|
 | map_centroid     | [41.881832, -87.623177] | Center [latitude, longitude] that your map shows when it loads. Defaults to Chicago.                            |
-| defaultZoom      | 11                      | Default zoom level when map is loaded (bigger is more zoomed in).                                               |
+| defaultZoom      | 9                      | Default zoom level when map is loaded (bigger is more zoomed in).                                               |
 | radius           | 805                     | Default search radius. Defined in meters. Default is 1/2 mile.                                                  |
 | filePath         |                         | The path to your csv or geojson file that contains your map data. This file should be put in the data directory |
 | fileType         | csv                     | File type to load in. Supports csv or geojson                                                                   |
