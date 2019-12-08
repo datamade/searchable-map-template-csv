@@ -27,12 +27,15 @@ You want to put your data on a searchable, filterable map. This is a free, open 
 
 This template depends on other JS libraries and resources:
 
-* [SearchableMap](https://Turf.com)
+* [Google Maps Javscript API](https://developers.google.com/maps/documentation/javascript/tutorial)
+* [Turf.js](https://Turf.com)
 * [Leaflet](https://leafletjs.com)
 * [jQuery 3.3.1](https://jquery.com/)
 * [jQuery Address](https://github.com/asual/jquery-address)
 * [Bootstrap 4](https://getbootstrap.com/)
 * [Moment.js](https://momentjs.com/)
+* [leaflet-color-markers](https://github.com/pointhi/leaflet-color-markers)
+* [csv-to-geojson](https://github.com/gavinr/csv-to-geojson)
 
 ## Examples
 

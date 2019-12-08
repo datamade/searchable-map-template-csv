@@ -126,6 +126,7 @@ var SearchableMapLib = {
         else if (SearchableMapLib.fileType == 'csv' ){
           // convert CSV
           if (SearchableMapLib.debug) console.log('converting to csv');
+          SearchableMapLib.geojsonData = convertCsvToGeojson(data)
         }
         else {
           // error!
