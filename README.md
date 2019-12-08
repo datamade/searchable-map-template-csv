@@ -23,15 +23,16 @@ You want to put your data on a searchable, filterable map. This is a free, open 
 
 This template depends on other JS libraries and resources:
 
-* [Google Maps Javscript API](https://developers.google.com/maps/documentation/javascript/tutorial)
-* [Turf.js](https://Turf.com)
-* [Leaflet](https://leafletjs.com)
-* [jQuery 3.3.1](https://jquery.com/)
-* [jQuery Address](https://github.com/asual/jquery-address)
-* [Bootstrap 4](https://getbootstrap.com/)
-* [Moment.js](https://momentjs.com/)
-* [leaflet-color-markers](https://github.com/pointhi/leaflet-color-markers)
-* [csv-to-geojson](https://github.com/gavinr/csv-to-geojson)
+* [Bootstrap 4](https://getbootstrap.com/) - Responsive CSS and HTML framework
+* [Leaflet](https://leafletjs.com) - Rendering the interactive map
+* [Turf.js](https://Turf.com) - Geospatial filtering
+* [Google Maps Javscript API](https://developers.google.com/maps/documentation/javascript/tutorial) - Geocoding and the Places API
+* [leaflet-color-markers](https://github.com/pointhi/leaflet-color-markers) - A set of colored map markers
+* [csv-to-geojson](https://github.com/gavinr/csv-to-geojson) - Converts CSV files to GeoJSON
+* [jQuery 3.3.1](https://jquery.com/) - Javascript utility
+* [jQuery Address](https://github.com/asual/jquery-address) - For stateful URLs
+* [Moment.js](https://momentjs.com/) - Manipulating dates and times in javascript
+
 
 ## Differences between this template and the Fusion Tables Map Template
 
@@ -55,7 +56,7 @@ Follow the steps below and you'll be in business with your own map.
 
 1. Download or clone this project and fire up your text editor of choice. Open up `/js/map.js` and set your map options in the `SearchableMapLib.initialize` function:
   - `map_centroid` -  the lat/long you want your map to center on ([find yours here](https://getlatlong.net/))
-  - `filePath` - Path to your map data file. This file needs to be in csv or geojson format and placed in the `data` folder
+  - `filePath` - Path to your map data file. This file needs to be in csv or geojson format and placed in the `data` folder. This file's first line must be the header, and it must have a latitude and longitude column. 
   - `fileType` - Set if you are loading in a `csv` or `geojson` file
   - `idField` - The column name for the unique identifier for each of your rows
 2. Replace the API key on this line of `index.html` with yours: `<script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places&key=[YOUR KEY HERE]"></script>`
@@ -101,8 +102,8 @@ SearchableMapLib.initialize({
 For making customizations to this template
 * [Bootstrap 4 documentation](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 * [EJS documentation](https://ejs.co/#docs)
-* [moment.js documentation](https://momentjs.com/docs/)
 * [Leaflet documentation](https://leafletjs.com/reference-1.5.0.html)
+* [moment.js documentation](https://momentjs.com/docs/)
 
 ## Common issues/troubleshooting
 
