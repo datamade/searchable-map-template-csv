@@ -274,7 +274,7 @@ var SearchableMapLib = {
 
     //-----custom filters-----
 
-    //search for pharmacy
+    //filter on location type. constructing a list of OR statements based on what checkboxes are selected
     var customFilters = [];
     if ( $("#cbType1").is(':checked')) {
       customFilters.push('r.properties["Type"] === "Pharmacy"');
@@ -297,6 +297,14 @@ var SearchableMapLib = {
         filter = filter.substring(0, filter.length - 3);
         return eval(filter);
     });
+
+    // name search
+    var name_search = $("#search-name").val().replace("'", "\\'");
+    if (name_search != '') {
+      SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
+          return r.properties["Facility Name"].toLowerCase().indexOf(name_search.toLowerCase()) > -1;
+        });
+    }
 
     // -----end of custom filters-----
 
