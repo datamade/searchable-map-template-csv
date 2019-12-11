@@ -62,15 +62,15 @@ Follow the steps below and you'll be in business with your own map.
   - `/templates/popup.ejs` - template for when a dot on the map is clicked
   - `/templates/table-row.ejs` - template for each row in the list view
 3. Remove the custom filters and add your own. 
-  -  `index.html`
-  - `/js/searchable_map_lib.js` - custom filters start around line 267
+  -  `index.html` - custom HTML for filters starts around line 112
+  - `/js/searchable_map_lib.js` - logic for custom filters starts around line 267
 
 ### Debugging - common issues/troubleshooting
 
 If your map isn't displaying any data, try the following:
 
-1. Use the [Firefox page inspector](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/UI_Tour) or  [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/). This will allow you to view and debug your javascript.
 1. Set the `debug` option in SearchableMapLib.initialize to `true`.
+1. Use the [Firefox page inspector](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/UI_Tour) or  [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/). This will allow you to view and debug your javascript.
 1. Load your map in the browser and open the javascript console 
    * Chrome DevTools on a Mac: Option+Command+J
    * Chrome DevTools on a PC: Control+Shift+J
@@ -110,7 +110,7 @@ SearchableMapLib.initialize({
 | fileType         | csv                     | File type to load in. Supports csv or geojson                                                                   |                                                                     |
 | recordName       | record                  | Used for showing the count of results.                                                                          |
 | recordNamePlural | records                 |                                                                                                                 |
-| debug            | false                   |                                                                                                                 |
+| debug            | false                   | Used to turn on helpful messages when debugging (see section on Debugging - common issues/troubleshooting)           |
 
 ## Resources
 
