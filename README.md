@@ -63,8 +63,10 @@ Follow the steps below and you'll be in business with your own map.
   - `/templates/hover.ejs` - template for when you hover over a dot on the map
   - `/templates/popup.ejs` - template for when a dot on the map is clicked
   - `/templates/table-row.ejs` - template for each row in the list view
-4. Add/modify additional filters to `index.html` and `/js/SearchableMap_lib.js`. This will depend on the data you are trying to map.
-5. Upload this map and all the supporting files and folders to your site. This map requires no back-end code, so any host will work, including GitHub pages, Netlify or your own web server.
+4. Add/modify additional filters to `index.html` and `/js/searchable_map_lib.js`. This will depend on the data you are trying to map.
+5. To run it locally, you will need to run a local web server. If you have python installed, you can run `python -m SimpleHTTPServer` from the command line from within this project folder.
+6. Upload this map and all the supporting files and folders to your site. This map requires no back-end code, so any host will work, including GitHub pages, Netlify or your own web server.
+
 
 ## MapsLib options
 
