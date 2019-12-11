@@ -44,7 +44,7 @@ That being said, there are some differences between this template and the Fusion
 * **Using Bootstrap 4**. I upgraded to the latest version of Boostrap when building this template. There are some notable changes in syntax with these versions, [which are documented here](https://getbootstrap.com/docs/4.3/migration/).
 * **List view included by default**. I decided to include the list view mode by default, as it is the best way to view results on a mobile phone. It requires editing an additonal template `templates/table-row.ejs` but I think is worth the extra work to customize.
 * **Hover functionality**. Because it was pretty to do in Leaflet, this template includes the ability to hover over a point and see a preview of the point data before clicking on it.
-* **Data size limits**. Because this template loads all the data into your browser, there are limitations to how any points you can display. Showing more than a few thousand points may make your browser quite slow.
+* **Data size limits**. Because this template loads all the data into your browser, there are limitations to how any points you can display. Showing more than a 1,000 points may make your browser quite slow.
 
 
 ## Setup
@@ -57,29 +57,46 @@ Follow the steps below and you'll be in business with your own map.
   - `map_centroid` -  the lat/long you want your map to center on ([find yours here](https://getlatlong.net/))
   - `filePath` - Path to your map data file. This file needs to be in csv or geojson format and placed in the `data` folder. This file's first line must be the header, and it must have a latitude and longitude column. 
   - `fileType` - Set if you are loading in a `csv` or `geojson` file
-  - `idField` - The column name for the unique identifier for each of your rows
-2. Replace the API key on this line of `index.html` with yours: `<script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places&key=[YOUR KEY HERE]"></script>`
-3. Edit the templates in the `templates` folder for how you want your data displayed. These templates use EJS, which allows the display of your variables with HTML, as well as conditional logic. [Documentation is here](https://ejs.co/#docs). 
+2. Edit the templates in the `templates` folder for how you want your data displayed. These templates use EJS, which allows the display of your variables with HTML, as well as conditional logic. [Documentation is here](https://ejs.co/#docs). 
   - `/templates/hover.ejs` - template for when you hover over a dot on the map
   - `/templates/popup.ejs` - template for when a dot on the map is clicked
   - `/templates/table-row.ejs` - template for each row in the list view
-4. Add/modify additional filters to `index.html` and `/js/SearchableMap_lib.js`. This will depend on the data you are trying to map.
-5. Upload this map and all the supporting files and folders to your site. This map requires no back-end code, so any host will work, including GitHub pages, Netlify or your own web server.
+3. Remove the custom filters and add your own. 
+  -  `index.html`
+  - `/js/searchable_map_lib.js` - custom filters start around line 267
 
-## MapsLib options
+### Debugging - common issues/troubleshooting
+
+If your map isn't displaying any data, try the following:
+
+1. Use the [Firefox page inspector](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/UI_Tour) or  [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/). This will allow you to view and debug your javascript.
+1. Set the `debug` option in SearchableMapLib.initialize to `true`.
+1. Load your map in the browser and open the javascript console 
+   * Chrome DevTools on a Mac: Option+Command+J
+   * Chrome DevTools on a PC: Control+Shift+J
+   *  Firefox Page Inspector: Tools => Web Developer => Web Console) 
+1. If you do see javascript errors:
+   * The error will tell you what line it is failing on. Best to start by going there!
+   * Columns you reference from your CSV file are case sensitive and must be exaclty the same.
+
+### Publishing your map
+
+1. Before you publish, you'll need to [get a Google API key](https://developers.google.com/maps/documentation/javascript/get-api-key). You can get on here. Replace the API key on this line of `index.html` with yours: `<script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places&key=[YOUR KEY HERE]"></script>`
+2. Upload this map and all the supporting files and folders to your site. This map requires no back-end code, so any host will work, including GitHub pages, Netlify or your own web server.
+
+## SearchableMapLib options
 
 You can configure your map by passing in a dictionary of options when you call the `SearchableMapLib.initialize` function in `/js/map.js`. Here's an example:
 
 ```javascript
 SearchableMapLib.initialize({
-    map_centroid: [41.85754, -87.66231],
-    defaultZoom:  11,
-    filePath: 'data/chicago-flu-shot-locations-2019.csv?4',
+    filePath: 'data/chicago-flu-shot-locations-2019.csv',
     fileType: 'csv',
-    idField: "Facility ID",
     recordName: 'flu shot location',
     recordNamePlural: 'flu shot locations',
-    radius: 1610,
+    map_centroid: [41.85754, -87.66231],
+    defaultZoom:  11,
+    defaultRadius: 1610,
     debug: false,
   });
 ```
@@ -88,10 +105,9 @@ SearchableMapLib.initialize({
 |------------------|-------------------------|-----------------------------------------------------------------------------------------------------------------|
 | map_centroid     | [41.881832, -87.623177] | Center [latitude, longitude] that your map shows when it loads. Defaults to Chicago.                            |
 | defaultZoom      | 9                      | Default zoom level when map is loaded (bigger is more zoomed in).                                               |
-| radius           | 805                     | Default search radius. Defined in meters. Default is 1/2 mile.                                                  |
+| defaultRadius           | 805                     | Default search radius. Defined in meters. Default is 1/2 mile.                                                  |
 | filePath         |                         | The path to your csv or geojson file that contains your map data. This file should be put in the data directory |
-| fileType         | csv                     | File type to load in. Supports csv or geojson                                                                   |
-| idField          | id                      | Unique identifier for each of your rows                                                                         |
+| fileType         | csv                     | File type to load in. Supports csv or geojson                                                                   |                                                                     |
 | recordName       | record                  | Used for showing the count of results.                                                                          |
 | recordNamePlural | records                 |                                                                                                                 |
 | debug            | false                   |                                                                                                                 |
@@ -103,20 +119,6 @@ For making customizations to this template
 * [EJS documentation](https://ejs.co/#docs)
 * [Leaflet documentation](https://leafletjs.com/reference-1.5.0.html)
 * [moment.js documentation](https://momentjs.com/docs/)
-
-## Common issues/troubleshooting
-
-If your map isn't displaying any data, try the following:
-
-1. Use the [Chrome developer console](https://developers.google.com/chrome-developer-tools/docs/console) or install [Firebug](http://getfirebug.com/) for FireFox. This will  do
-you to debug your javascript.
-1. Load your map in the browser and open the javascript console 
-   * Chrome developer console on a Mac: Option+Command+J
-   * Chrome developer console on a PC: Control+Shift+J
-   * Firebug in Firefox: Tools => Web Developer => Firebug => Open Firebug) 
-1. If you do see javascript errors:
-   * The error will tell you what line it is failing on. Best to start by going there!
-   * Columns in Turf are converted to lower case with underscores (`First Name` => `first_name`), so make sure they are correct.
 
 ## Errors and Bugs
 

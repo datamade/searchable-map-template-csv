@@ -7,7 +7,6 @@ var SearchableMapLib = {
   filePath: '',
   fileType: '',
   csvOptions: '',
-  idField: '',
   listOrderBy: '',
   recordName: '',
   recordNamePlural: '',
@@ -30,11 +29,10 @@ var SearchableMapLib = {
     SearchableMapLib.filePath = options.filePath || "",
     SearchableMapLib.fileType = options.fileType || "csv",
     SearchableMapLib.csvOptions = options.csvOptions || {separator: ',', delimiter: '"'},
-    SearchableMapLib.idField = options.idField || "id",
     SearchableMapLib.listOrderBy = options.listOrderBy || "",
     SearchableMapLib.recordName = options.recordName || "result",
     SearchableMapLib.recordNamePlural = options.recordNamePlural || "results",
-    SearchableMapLib.radius = options.radius || 805,
+    SearchableMapLib.radius = options.defaultRadius || 805,
     SearchableMapLib.debug = options.debug || false
 
     if (SearchableMapLib.debug)
@@ -75,7 +73,7 @@ var SearchableMapLib = {
 
       // method that we will use to update the control based on feature properties passed
       var hover_template;
-      $.get( "/templates/hover.ejs?1", function( template ) {
+      $.get( "/templates/hover.ejs", function( template ) {
         hover_template = template;
       });
       SearchableMapLib.info.update = function (props) {
@@ -138,14 +136,6 @@ var SearchableMapLib = {
           console.log(SearchableMapLib.geojsonData);
         }
 
-        var num = $.address.parameter('modal_id');
-
-        // if (typeof num !== 'undefined') {
-        //   $.grep(SearchableMapLib.csvData, function(v) {
-        //     SearchableMapLib.modalPop(v[SearchableMapLib.idField] === num);
-        //   });
-        // }
-
         SearchableMapLib.doSearch();
 
       });
@@ -205,7 +195,7 @@ var SearchableMapLib = {
     }
     else {
       var row_content;
-      $.get( "/templates/table-row.ejs?2", function( template ) {
+      $.get( "/templates/table-row.ejs", function( template ) {
           for (idx in SearchableMapLib.currentResults.features) {
             row_content = ejs.render(template, {obj: SearchableMapLib.currentResults.features[idx].properties});
 
@@ -237,12 +227,11 @@ var SearchableMapLib = {
       console.log(data);
     }
     var modal_content;
-    $.get( "/templates/popup.ejs?1", function( template ) {
+    $.get( "/templates/popup.ejs", function( template ) {
         modal_content = ejs.render(template, {obj: data});
         $('#modal-pop').modal();
         $('#modal-main').html(modal_content);
-        $.address.parameter('modal_id', data[SearchableMapLib.idField]);
-      });
+    });
   },
 
   clearSearch: function(){
@@ -275,6 +264,7 @@ var SearchableMapLib = {
 
     //-----custom filters-----
 
+    //-----facility type filter-----
     //filter on location type. constructing a list of OR statements based on what checkboxes are selected
     var customFilters = [];
     if ( $("#cbType1").is(':checked')) {
@@ -298,14 +288,16 @@ var SearchableMapLib = {
         filter = filter.substring(0, filter.length - 3);
         return eval(filter);
     });
+    //-----end facility type filter-----
 
-    // name search
+    //-----name search filter-----
     var name_search = $("#search-name").val().replace("'", "\\'");
     if (name_search != '') {
       SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
           return r.properties["Facility Name"].toLowerCase().indexOf(name_search.toLowerCase()) > -1;
         });
     }
+    //-----end name search filter-----
 
     // -----end of custom filters-----
 
