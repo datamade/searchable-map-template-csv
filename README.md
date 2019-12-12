@@ -1,6 +1,6 @@
-# Searchable Map Template - Turf
+# Searchable Map Template - CSV
 
-You want to put your data on a searchable, filterable map. This is a free, open source template using Turf to help you do it. This template is a successor to Derek Eder's [Fusion Tables Map Template](https://github.com/derekeder/FusionTable-Map-Template).
+You want to put your data on a searchable, filterable map. Provide a comma separated file (CSV) and this free, open source template will do the rest. This template is a successor to Derek Eder's [Fusion Tables Map Template](https://github.com/derekeder/FusionTable-Map-Template).
 
 **[See the working demo &raquo;](https://searchable-map-template-turf.netlify.com/)**
 
