@@ -51,11 +51,27 @@ That being said, there are some differences between this template and the Fusion
 
 Follow the steps below and you'll be in business with your own map.
 
-### Editing this template 
+### Step 1: Get and prep your data
+
+This template will work with data in [csv](https://en.wikipedia.org/wiki/Comma-separated_values) and [geojson](https://en.wikipedia.org/wiki/GeoJSON) formats.
+
+If you have an `xls` or `xlsx` spreadsheet, you can save it as a `csv` file from Excel, Numbers, Libre Office or your spreadsheet tool of choice.
+
+The `csv` file must have a latitude column and longitude column. If you don't have this, but have information like a street address, you'll need to [geocode](https://en.wikipedia.org/wiki/Geocode) your data.
+
+Here's a few tools for geocoding:
+
+* Google has the best geocoder in terms of accuracy. They have an [API that you can use](https://developers.google.com/maps/documentation/geocoding/start), but may cost you money depending on how many rows you have to geocode.
+* If you're using Google Sheets, [this is a handy plugin](https://github.com/DataVizForAll/google-sheets-geocoder) that uses the Google Geocoder. 
+* [Geocoding in QGIS](https://www.gislounge.com/how-to-geocode-addresses-using-qgis/) (uses OpenStreetMap)
+* [BatchGeo](https://www.batchgeo.com/) 
+* [Texas A&M](http://geoservices.tamu.edu/Services/Geocode/)
+
+### Step 2: Download and edit this template 
 
 1. Download or clone this project and fire up your text editor of choice. Open up `/js/map.js` and set your map options in the `SearchableMapLib.initialize` function:
   - `map_centroid` -  the lat/long you want your map to center on ([find yours here](https://getlatlong.net/))
-  - `filePath` - Path to your map data file. This file needs to be in csv or geojson format and placed in the `data` folder. This file's first line must be the header, and it must have a latitude and longitude column. 
+  - `filePath` - Path to your map data file. This file needs to be in csv or geojson format and placed in the `data` folder. This file's first line must be the header, and it must have a latitude column and longitude column. 
   - `fileType` - Set if you are loading in a `csv` or `geojson` file
 2. Edit the templates in the `templates` folder for how you want your data displayed. These templates use EJS, which allows the display of your variables with HTML, as well as conditional logic. [Documentation is here](https://ejs.co/#docs). 
   - `/templates/hover.ejs` - template for when you hover over a dot on the map
@@ -65,7 +81,15 @@ Follow the steps below and you'll be in business with your own map.
   -  `index.html` - custom HTML for filters starts around line 112
   - `/js/searchable_map_lib.js` - logic for custom filters starts around line 267
 
-### Debugging - common issues/troubleshooting
+### Step 3: Running it locally
+
+Once you've made your changes, you'll want to test the map to make sure it works. To view it in your browser, you'll need to run a web server on your computer. It can be any web server, but here are some ones I suggest using:
+
+* HTTP Party's [http-server](https://github.com/http-party/http-server). Once its installed, you can run `npx http-server . -c-1` from the command line.
+* If you have python installed, you can run this from the command line: `python -m SimpleHTTPServer`
+* If you have one you'd like to add to this list (especially one for Windows machines, please [add a comment to this issue](https://github.com/datamade/searchable-map-template-csv/issues/13))
+
+### Step 4: Debugging - common issues/troubleshooting
 
 If your map isn't displaying any data, try the following:
 
@@ -79,7 +103,7 @@ If your map isn't displaying any data, try the following:
    * The error will tell you what line it is failing on. Best to start by going there!
    * Columns you reference from your CSV file are case sensitive and must be exaclty the same.
 
-### Publishing your map
+### Step 5: Publishing your map
 
 1. Before you publish, you'll need to [get a Google API key](https://developers.google.com/maps/documentation/javascript/get-api-key). You can get on here. Replace the API key on this line of `index.html` with yours: `<script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places&key=[YOUR KEY HERE]"></script>`
 2. Upload this map and all the supporting files and folders to your site. This map requires no back-end code, so any host will work, including GitHub pages, Netlify or your own web server.
