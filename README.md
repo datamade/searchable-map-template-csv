@@ -57,7 +57,7 @@ This template will work with data in [csv](https://en.wikipedia.org/wiki/Comma-s
 
 If you have an `xls` or `xlsx` spreadsheet, you can save it as a `csv` file from Excel, Numbers, Libre Office or your spreadsheet tool of choice.
 
-The `csv` file must have a latitude column and longitude column. If you don't have this, but have information like a street address, you'll need to [geocode](https://en.wikipedia.org/wiki/Geocode) your data.
+The `csv` file must have a latitude column and longitude column and all rows must be geocoded. If you don't have this, but have information like a street address, you'll need to [geocode](https://en.wikipedia.org/wiki/Geocode) your data.
 
 Here's a few tools for geocoding:
 
@@ -86,7 +86,9 @@ Here's a few tools for geocoding:
 Once you've made your changes, you'll want to test the map to make sure it works. To view it in your browser, you'll need to run a web server on your computer. It can be any web server, but here are some ones I suggest using:
 
 * HTTP Party's [http-server](https://github.com/http-party/http-server). Once its installed, you can run `npx http-server . -c-1` from the command line.
-* If you have python installed, you can run this from the command line: `python -m SimpleHTTPServer`
+* If you have python installed, you can run this from the command line (note, you can see what version of python you have by typing `python --version): 
+  - python 2: `python -m SimpleHTTPServer`
+  - python 3: `python -m http.server`
 * If you have one you'd like to add to this list (especially one for Windows machines, please [add a comment to this issue](https://github.com/datamade/searchable-map-template-csv/issues/13))
 
 ### Step 4: Debugging - common issues/troubleshooting
