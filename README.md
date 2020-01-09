@@ -79,7 +79,7 @@ Here's a few tools for geocoding:
   - `/templates/table-row.ejs` - template for each row in the list view
 3. Remove the custom filters and add your own. 
   -  `index.html` - custom HTML for filters starts around line 112
-  - `/js/searchable_map_lib.js` - logic for custom filters starts around line 267
+  - `/js/searchable_map_lib.js` - logic for custom filters starts around line 265
 
 ### Step 3: Running it locally
 
