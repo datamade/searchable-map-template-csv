@@ -4,7 +4,7 @@ You want to put your data on a searchable, filterable map. Provide a comma separ
 
 **[See the working demo &raquo;](https://searchable-map-template-csv.netlify.com/)**
 
-![searchable-map-template-turf](https://raw.githubusercontent.com/datamade/searchable-map-template-turf/master/images/screenshot.jpg)
+![searchable-map-template-turf](https://raw.githubusercontent.com/datamade/searchable-map-template-turf/master/img/screenshot.jpg)
 
 ## Features
 
