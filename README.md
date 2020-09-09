@@ -62,7 +62,7 @@ The `csv` file must have a latitude column and longitude column and all rows mus
 Here's a few tools for geocoding:
 
 * Google has the best geocoder in terms of accuracy. They have an [API that you can use](https://developers.google.com/maps/documentation/geocoding/start), but may cost you money depending on how many rows you have to geocode.
-* If you're using Google Sheets, [this is a handy plugin](https://github.com/DataVizForAll/google-sheets-geocoder) that uses the Google Geocoder. 
+* To geocode addresses inside Google Sheets, install the [free Geocoding by SmartMonkey Add-On for Google Sheets](https://gsuite.google.com/marketplace/app/geocoding_by_smartmonkey/1033231575312). See [geocoding instructions in Hands-On Data Visualization](https://handsondataviz.org/geocode.html).
 * [Geocoding in QGIS](https://www.gislounge.com/how-to-geocode-addresses-using-qgis/) (uses OpenStreetMap)
 * [BatchGeo](https://www.batchgeo.com/) 
 * [Texas A&M](http://geoservices.tamu.edu/Services/Geocode/)
