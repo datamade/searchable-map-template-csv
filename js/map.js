@@ -8,12 +8,12 @@ $(window).resize(function () {
 $(function() {
 
   SearchableMapLib.initialize({
-    filePath: 'data/chicago-flu-shot-locations-2019.csv',
+    filePath: 'data/ReviewsFood.csv',
     fileType: 'csv',
-    recordName: 'flu shot location',
-    recordNamePlural: 'flu shot locations',
-    map_centroid: [41.85754, -87.66231],
-    defaultZoom:  11,
+    recordName: 'Business',
+    recordNamePlural: 'Choices',
+    map_centroid: [42.35005675499018, -71.12603327918016],
+    defaultZoom:  5,
     defaultRadius: 1610,
     debug: false,
   });
