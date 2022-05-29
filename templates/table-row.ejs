@@ -1,15 +1,24 @@
-<tr>                  
+<tr>
     <td>
-        <%= obj["Facility Name"] %>
-    </td>                  
+      <% if (obj["Website"]) { %>
+        <a href='<%= obj["Website"] %>' target='_blank'><%= obj["Name"] %></a>
+      <% } else {%>
+        <%= obj["Name"] %>
+        <% } %>
+    </td>
     <td>
-        <%= formatAddress(obj) %><br />
-        (<a href='http://maps.google.com/?q=<%= formatAddress(obj) %>' target='_blank'>Get directions</a>)
-    </td> 
+        <a href='http://maps.google.com/?q=<%= obj["Address"] %>' target='_blank'><%= obj["Address"] %></a>
+    </td>
     <td>
-        <%= obj["Phone"] %>
-    </td>                 
+        <%= obj["Rating"] %>
+    </td>
     <td>
-        <%= obj["Hours"] %>
+        <%= obj["Type of Food"] %>
+    </td>
+    <td>
+        <%= obj["Meals Served"] %>
+    </td>
+    <td>
+        <%= obj["Expected Price"] %>
     </td>
 </tr>

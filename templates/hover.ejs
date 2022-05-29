@@ -1,7 +1,9 @@
 <strong>
     <%= obj["Name"] %>
 </strong><br />
-<%= formatAddress(obj) %><br />
-<% if (obj["Type of Food"]) { %>
-    Hours: <%= obj["Type of Food"] %><br />
+<% { %>
+    Type of Food: <%= obj["Type of Food"] %><br />
+    Rating: <%= obj["Rating"] %><br />
+    Meals Served: <%= obj["Meals Served"] %><br />
+    Expected Price: <%= obj["Expected Price"] %><br />
 <% } %>

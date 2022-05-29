@@ -1,25 +1,55 @@
 <h4>
-    <%= obj["Facility Name"] %>
-</h4>             
+  <% if (obj["Website"]) { %>
+    <a href='<%= obj["Website"] %>' target='_blank'><%= obj["Name"] %></a>
+  <% } else {%>
+    <%= obj["Name"] %>
+    <% } %>
+</h4>
 <p>
-    <%= formatAddress(obj) %><br />
-    <%= obj["Phone"] %><br />
-
-    <% if (obj["URL"]) { %>
-        <a href='<%= obj["URL"] %>' target='_blank'>Website</a>
+    <% { %>
+        <a href='http://maps.google.com/?q=<%= obj["Address"] %>' target=><%= obj["Address"] %></a><br>
+    <% } %>
+</p>
+<p>
+    <% { %>
+        <strong>Type of Food:</strong> <%= obj["Type of Food"] %><br>
+        <strong>Meals Served:</strong> <%= obj["Meals Served"] %><br>
+        <strong>Expected Price:</strong> <%= obj["Expected Price"] %><br>
+        <strong>Rating:</strong> <%= obj["Rating"] %><br>
     <% } %>
 </p>
 
-<% if (obj["Cost"]) { %>
+<% if (obj["Menu Highlights"]) { %>
     <p>
-        <strong>Cost</strong><br />
-        <%= obj["Cost"] %>
+        <strong>Menu Highlights</strong><br />
+        <%= obj["Menu Highlights"] %>
     </p>
 <% } %>
 
-<% if (obj["Hours"]) { %>
+<% if (obj["Service Quality"]) { %>
     <p>
-        <strong>Hours</strong><br />
-        <%= obj["Hours"] %>
+        <strong>Service Quality</strong><br />
+        <%= obj["Service Quality"] %>
+    </p>
+<% } %>
+
+<% if (obj["Considerations"]) { %>
+    <p>
+        <strong>Considerations</strong><br />
+        <%= obj["Considerations"] %>
+    </p>
+<% } %>
+
+<% if (obj["Extra Info"]) { %>
+    <p>
+        <strong>Extra Info</strong><br />
+        <%= obj["Extra Info"] %>
+    </p>
+<% } %>
+
+<% if (obj["Eco Friendly?"]) { %>
+    <p>
+        <strong>Eco Friendly?</strong><br />
+        <%= obj["Eco Friendly?"] %>
     </p>
 <% } %>
