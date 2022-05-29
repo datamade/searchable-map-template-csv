@@ -10,10 +10,10 @@ $(function() {
   SearchableMapLib.initialize({
     filePath: 'data/ReviewsFood.csv',
     fileType: 'csv',
-    recordName: 'Business',
+    recordName: 'Marker',
     recordNamePlural: 'Choices',
-    map_centroid: [42.35005675499018, -71.12603327918016],
-    defaultZoom:  5,
+    map_centroid: [37.6604, -121.8758],
+    defaultZoom:  9,
     defaultRadius: 1610,
     debug: false,
   });
