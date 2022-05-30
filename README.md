@@ -1,4 +1,5 @@
-# Searchable Map Template - CSV
+# Will's Food Review Map
+<!--
 
 You want to put your data on a searchable, filterable map. Provide a comma separated file (CSV) and this free, open source template will do the rest. This template is a successor to Derek Eder's [Fusion Tables Map Template](https://github.com/derekeder/FusionTable-Map-Template).
 
@@ -36,7 +37,7 @@ This template depends on other JS libraries and resources:
 
 ## Differences between this template and the Fusion Tables Map Template
 
-This template borrows heavily from Derek Eder's [Fusion Tables Map Template](https://github.com/derekeder/FusionTable-Map-Template) and follows a similar code pattern and architecture. It is intended to be easy to pick up and modify by people with limited coding experience and not require anything to be installed on your computer or server to run it. 
+This template borrows heavily from Derek Eder's [Fusion Tables Map Template](https://github.com/derekeder/FusionTable-Map-Template) and follows a similar code pattern and architecture. It is intended to be easy to pick up and modify by people with limited coding experience and not require anything to be installed on your computer or server to run it.
 
 That being said, there are some differences between this template and the Fusion Tables Map Template, namely:
 
@@ -64,20 +65,20 @@ Here's a few tools for geocoding:
 * Google has the best geocoder in terms of accuracy. They have an [API that you can use](https://developers.google.com/maps/documentation/geocoding/start), but may cost you money depending on how many rows you have to geocode.
 * To geocode addresses inside Google Sheets, install the [free Geocoding by SmartMonkey Add-On for Google Sheets](https://gsuite.google.com/marketplace/app/geocoding_by_smartmonkey/1033231575312). See [geocoding instructions in Hands-On Data Visualization](https://handsondataviz.org/geocode.html).
 * [Geocoding in QGIS](https://www.gislounge.com/how-to-geocode-addresses-using-qgis/) (uses OpenStreetMap)
-* [BatchGeo](https://www.batchgeo.com/) 
+* [BatchGeo](https://www.batchgeo.com/)
 * [Texas A&M](http://geoservices.tamu.edu/Services/Geocode/)
 
-### Step 2: Download and edit this template 
+### Step 2: Download and edit this template
 
 1. Download or clone this project and fire up your text editor of choice. Open up `/js/map.js` and set your map options in the `SearchableMapLib.initialize` function:
   - `map_centroid` -  the lat/long you want your map to center on ([find yours here](https://getlatlong.net/))
-  - `filePath` - Path to your map data file. This file needs to be in csv or geojson format and placed in the `data` folder. This file's first line must be the header, and it must have a latitude column and longitude column. 
+  - `filePath` - Path to your map data file. This file needs to be in csv or geojson format and placed in the `data` folder. This file's first line must be the header, and it must have a latitude column and longitude column.
   - `fileType` - Set if you are loading in a `csv` or `geojson` file
-2. Edit the templates in the `templates` folder for how you want your data displayed. These templates use EJS, which allows the display of your variables with HTML, as well as conditional logic. [Documentation is here](https://ejs.co/#docs). 
+2. Edit the templates in the `templates` folder for how you want your data displayed. These templates use EJS, which allows the display of your variables with HTML, as well as conditional logic. [Documentation is here](https://ejs.co/#docs).
   - `/templates/hover.ejs` - template for when you hover over a dot on the map
   - `/templates/popup.ejs` - template for when a dot on the map is clicked
   - `/templates/table-row.ejs` - template for each row in the list view
-3. Remove the custom filters and add your own. 
+3. Remove the custom filters and add your own.
   -  `index.html` - custom HTML for filters starts around line 112
   - `/js/searchable_map_lib.js` - logic for custom filters starts around line 265
 
@@ -86,7 +87,7 @@ Here's a few tools for geocoding:
 Once you've made your changes, you'll want to test the map to make sure it works. To view it in your browser, you'll need to run a web server on your computer. It can be any web server, but here are some ones I suggest using:
 
 * HTTP Party's [http-server](https://github.com/http-party/http-server). Once its installed, you can run `npx http-server . -c-1` from the command line.
-* If you have python installed, you can run this from the command line (note, you can see what version of python you have by typing `python --version): 
+* If you have python installed, you can run this from the command line (note, you can see what version of python you have by typing `python --version):
   - python 2: `python -m SimpleHTTPServer`
   - python 3: `python -m http.server`
 * If you have one you'd like to add to this list (especially one for Windows machines, please [add a comment to this issue](https://github.com/datamade/searchable-map-template-csv/issues/13))
@@ -97,10 +98,10 @@ If your map isn't displaying any data, try the following:
 
 1. Set the `debug` option in SearchableMapLib.initialize to `true`.
 1. Use the [Firefox page inspector](https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/UI_Tour) or  [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools/). This will allow you to view and debug your javascript.
-1. Load your map in the browser and open the javascript console 
+1. Load your map in the browser and open the javascript console
    * Chrome DevTools on a Mac: Option+Command+J
    * Chrome DevTools on a PC: Control+Shift+J
-   *  Firefox Page Inspector: Tools => Web Developer => Web Console) 
+   *  Firefox Page Inspector: Tools => Web Developer => Web Console)
 1. If you do see javascript errors:
    * The error will tell you what line it is failing on. Best to start by going there!
    * Columns you reference from your CSV file are case sensitive and must be exaclty the same.
@@ -149,4 +150,4 @@ For making customizations to this template
 ## Errors and Bugs
 
 If something is not behaving intuitively, it is a bug, and should be reported.
-Report it here: https://github.com/datamade/searchable-map-template-turf/issues
+Report it here: https://github.com/datamade/searchable-map-template-turf/issues -->
