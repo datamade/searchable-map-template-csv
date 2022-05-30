@@ -1,65 +1,82 @@
 <!DOCTYPE html>
 <html lang='en'>
-  <head>
-    <title>Searchable Map Template - CSV</title>
+<head>
+  <title>Food Map</title>
 
-    <meta charset='utf-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content='You want to put your data on a searchable, filterable map. Provide a comma separated file (CSV) and this free, open source template will do the rest.' name='description'>
-    <meta content='Searchable Map Template - CSV' name='author'>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta content='Food Map' name='Will Harvey'>
 
-    <!-- Facebook metadata -->
-    <meta content="Searchable Map Template - CSV" property="og:site_name">
-    <meta content="Searchable Map Template - CSV" property="og:title">
-    <meta content="website" property="og:type">
-    <meta content="You want to put your data on a searchable, filterable map. Provide a comma separated file (CSV) and this free, open source template will do the rest." property="og:description">
-    <meta content="https://searchable-map-template-csv.netlify.com/" property="og:url">
-    <meta content="https://searchable-map-template-csv.netlify.com/img/screenshot.jpg" property="og:image">
+  <!-- Facebook metadata -->
+  <meta content="Food Map" property="og:site_name">
+  <meta content="Food Map" property="og:title">
+  <!-- <meta content="website" property="og:type"> -->
+  <!-- <meta content="Find somewhere to get a bite to eat or drink!" property="og:description"> -->
+  <!-- <meta content="https://searchable-map-template-csv.netlify.com/" property="og:url"> -->
+  <!-- <meta content="https://searchable-map-template-csv.netlify.com/img/screenshot.jpg" property="og:image"> -->
 
-    <!-- Twitter metadata -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@DataMadeCo">
-    <meta name="twitter:creator" content="@DataMadeCo">
-    <meta name="twitter:title" content="Searchable Map Template - CSV">
-    <meta name="twitter:url" content="https://searchable-map-template-csv.netlify.com/">
-    <meta name="twitter:description" content="You want to put your data on a searchable, filterable map. Provide a comma separated file (CSV) and this free, open source template will do the rest.">
-    <meta name="twitter:image:src" content="https://searchable-map-template-csv.netlify.com/img/screenshot.jpg">
+  <!-- Twitter metadata -->
+  <!-- <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@DataMadeCo">
+  <meta name="twitter:creator" content="@DataMadeCo">
+  <meta name="twitter:title" content="Food Map">
+  <meta name="twitter:url" content="https://searchable-map-template-csv.netlify.com/">
+  <meta name="twitter:description" content="Find somewhere to get a bite to eat or drink!">
+  <meta name="twitter:image:src" content="https://searchable-map-template-csv.netlify.com/img/screenshot.jpg"> -->
 
-    <!-- Styles -->
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-reboot.min.css">
+  <!-- Styles -->
+  <!-- Bootstrap cssS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="css/custom.css"/>
 
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/custom.css"/>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="lib/jquery-3.3.1.min.js"></script>
+  <script src="lib/popper.min.js"></script>
+  <script src="lib/bootstrap.min.js"></script>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="/lib/jquery-3.3.1.min.js"></script>
-    <script src="/lib/popper.min.js"></script>
-    <script src="/lib/bootstrap.min.js"></script>
+  <script src="lib/ejs.min.js"></script>
+  <script src="lib/jquery.address.js"></script>
+  <script src="lib/jquery.csv.min.js"></script>
+  <script src="lib/moment.js"></script>
+  <script src="lib/geojson.min.js"></script>
+  <script src="js/csv-to-geojson.js"></script>
 
-  </head>
-  <body>
+  <!-- Leaflet and Google -->
+  <link rel="stylesheet" href="css/leaflet.css"/>
+  <script src="lib/leaflet.js"></script>
+  <script src='lib/turf.min.js'></script>
+  <script src="https://maps.google.com/maps/api/js?libraries=places&key=AIzaSyC4PFgbIb3gaZfqX04NfIUm6yDXvqAEU94"></script>
+  <script src="lib/Leaflet.GoogleMutant.js" ></script>
+  <script src="lib/leaflet-color-markers.js" ></script>
 
-    <nav class="navbar navbar-expand-md navbar-light mb-2">
-      <a class="navbar-brand" href="index.html">
-        Searchable Map Template - CSV
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <!-- Custom JavaScript -->
+  <script src="js/searchable_map_lib.js"></script>
+  <script src="js/analytics_lib.js"></script>
 
-      <div class="collapse navbar-collapse mr-auto" id="navbarsExampleDefault">
-        <ul class="navbar-nav ml-auto">
-          <li class='nav-item'>
-            <a class="nav-link" href="index.html"><i class="fa fa-map-marker" aria-hidden="true"></i> Map</a>
-          </li>
-          <li class='nav-item'>
-            <a class="nav-link active" href="about.html"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-light mb-2">
+    <a class="navbar-brand" href="index.html">
+      Food Map
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse mr-auto" id="navbarsExampleDefault">
+      <ul class="navbar-nav ml-auto">
+        <li class='nav-item'>
+          <a class="nav-link active" href="index.html"><i class="fa fa-map-marker" aria-hidden="true"></i> Map</a>
+        </li>
+        <li class='nav-item'>
+          <a class="nav-link" href="about.html"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
     <main role="main" class="container-fluid">
 
@@ -72,8 +89,22 @@
                 <h3 class="mt-4" id="about"><i class="fa fa-info-circle" aria-hidden="true"></i> About</h3>
 
 
-                <p>Talk about your project here.</p>
-
+                <p>This is my second iteration of a map to use my notes on places to eat to make it easier to find somewhere to eat.
+                I originally use <a href='https://support.awesome-table.com/hc/en-us/articles/360000112449--Part-2-Geocode-addresses' target='_blank'>Awesome Table</a>, but their pricing pushed me to find an alternative given that this is just a personal project.
+                Thus, after finding <a href='https://github.com/datamade/searchable-map-template-csv' target='_blank'>searchable-map-template-csv</a> by <a href='https://derekeder.com/' target='_blank'>Derek Eder</a> and <a href='https://datamade.us/' target='_blank'>DataMade</a>,
+                  I figured it was time to shake off some javascript and html rust to make a second iteration of a food map!
+                </p>
+                <br><br><br><br>
+                <p>
+                  <h4>More Info</h4>
+                  To see the code for this program, check out the <a href='https://github.com/wtharvey2/food_map/' target='_blank'>github repository here</a>.
+                  <br>
+                  To see other projects I've done, check out <a href='https://wthprojects.com/' target='_blank'>my website</a>!
+                  <br>
+                  Otherwise, go get some food!
+                  <br>
+                  - Will
+                </p>
               </div>
             </div>
 
