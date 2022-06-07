@@ -281,6 +281,23 @@ var SearchableMapLib = {
           return (r.properties["Rating"] == '');
         });
     }
+
+    var what_meal = $("#mealSelect").val();
+    SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
+      let return_bool = 0;
+      if (what_meal.length > 0) {
+        for (let i = 0; i < what_meal.length; i++) {
+          if (r.properties["Meals Served"].indexOf(what_meal[i])>-1) {
+            return_bool = 1;
+          }
+        }
+      } else{
+        // This is the case where nothing is selected- thus, we want everything to show up!
+        return_bool = 1;
+      }
+      return return_bool;
+    });
+
     //-----name search filter-----
     var name_search = $("#search-name").val().replace("'", "\\'");
     if (name_search != '') {
