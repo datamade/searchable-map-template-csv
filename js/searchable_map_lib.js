@@ -270,14 +270,17 @@ var SearchableMapLib = {
         });
     }
 
-    // var rating_filter = $("#rating-filter").val();
-    // if (rating_filter == "Top Rated") {
-    // //   SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
-    // //       return r.properties["Expected Price"].indexOf(acceptable_price) > -1;
-    // //     });
-    // // } else if (rating_filter == "Top Rated") {
-    // //
-    // }
+    var rating_filter = $("#rating-filter").val();
+    if (rating_filter == "Top Rated") {
+      SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
+          return (r.properties["Rating"] == 10 || r.properties["Rating"] == 9 ||
+            r.properties["Rating"] == 8 || r.properties["Rating"] == 7);
+        });
+    } else if (rating_filter == "Somewhere New") {
+      SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
+          return (r.properties["Rating"] == '');
+        });
+    }
     //-----name search filter-----
     var name_search = $("#search-name").val().replace("'", "\\'");
     if (name_search != '') {
