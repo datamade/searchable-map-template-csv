@@ -731,8 +731,8 @@ New Woey Loy Goey Restaurant,Somewhere New,Chinese,"Lunch, Dinner",$07-$15,Canto
 San Francisco, CA 94133",37.7959393,-122.4064993,1/29/20 1:03,Bay Area,,
 "Auntie April's Chicken, Waffles, & Soul Food Restaurant",Somewhere New,"American, Comfort Food","Breakfast, Lunch",$07-$15,,,,,,,,"4618 3rd St
 San Francisco, CA 94124",37.736166,-122.3905437,1/29/20 1:05,Bay Area,,
-Blue Hill New York,Somewhere New!!,American,Dinner,$100.00 ,,,,,https://www.bluehillfarm.com/dine/new-york,,,"75 Washington Pl, New York, NY 10011",40.7320538,-73.9996802,2/14/20 21:32,NYC,,2
-Next,Somewhere New,Fine Dining,Dinner,$100.00 ,,,,~$200/ person,https://www.nextrestaurant.com/,,,"953 W Fulton Market, Chicago, IL 60607",41.886606,-87.651973,2/15/20 1:10,Chicago,,
+Blue Hill New York,Somewhere New!!,American,Dinner,$100+,,,,,https://www.bluehillfarm.com/dine/new-york,,,"75 Washington Pl, New York, NY 10011",40.7320538,-73.9996802,2/14/20 21:32,NYC,,2
+Next,Somewhere New,Fine Dining,Dinner,$100+,,,,~$200/ person,https://www.nextrestaurant.com/,,,"953 W Fulton Market, Chicago, IL 60607",41.886606,-87.651973,2/15/20 1:10,Chicago,,
 Darjeeling Express,Somewhere New,Indian,"Lunch, Dinner",$15-$30,,,,,https://www.darjeeling-express.com/,,,"Kingly Court, Carnaby St, London W1B 5PW, United Kingdom",51.5125141,-0.1387177,3/29/20 3:13,London,,
 Duarte's Tavern,Somewhere New,American,"Breakfast, Lunch, Dinner",$10-$20,,,,,,,,"202 Stage Rd, Pescadero, CA 94060",37.2521417,-122.3827874,5/2/20 16:34,Bay Area,,
 Bella Trattoria,Somewhere New,Italian,"Brunch, Lunch, Dinner",$20-$40,,,,,https://osteriabella.com/,,,"3854 Geary Blvd, San Francisco, CA 94118",37.7813812,-122.4609365,9/28/20 14:37,Bay Area,,
@@ -947,16 +947,16 @@ San Francisco, CA 94123",37.7999003,-122.4421013,10/1/21 2:19,Bay Area,Yes,1
 Grégoire Restaurant,Somewhere New,"Fast Food, French","Lunch, Dinner",$10-$20,,,,Gourmet French fast food,http://www.gregoirerestaurant.com/,,,"2109 Cedar St, Berkeley, CA 94709",37.8786754,-122.2686011,10/1/21 2:30,Bay Area,,
 Curbside Cafe,Somewhere New!,Modern/Contemporary,"Breakfast, Lunch, Dinner, Dessert",$20-$35,The bread pudding supposedly is quite good,,,An eclectic mix of food,https://sfcurbside.com/,,,"2417 California Street, San Francisco, CA 94115",37.7887271,-122.4341478,10/1/21 3:45,Bay Area,,1
 Sugar Butter Flour,Somewhere New,Bakery,"Lunch, Specialty",$07-$15,"A wide range of cakes, sweets, pastries, and bread pudding",,,,http://www.sugarbutterflour.com/,,,"669 S Bernardo Ave, Sunnyvale, CA 94087",37.3725787,-122.057731,10/1/21 3:50,Bay Area,,
-Atelier Crenn,Somewhere New!!!,"Fine Dining, French",Dinner,$100.00 ,,,,Chef Dominique Crenn's 3-star restaurant,https://www.ateliercrenn.com/,,,"3127 Fillmore St, San Francisco, CA 94123",37.7983235,-122.4360123,10/1/21 4:08,Bay Area,,3
-Nonesuch,Somewhere New!!!,Fine Dining,Dinner,$100.00 ,,,,A tasting menu exploring Oklahoma ingredients,http://www.nonesuchokc.com/,,,"803 N Hudson Ave
+Atelier Crenn,Somewhere New!!!,"Fine Dining, French",Dinner,$100+,,,,Chef Dominique Crenn's 3-star restaurant,https://www.ateliercrenn.com/,,,"3127 Fillmore St, San Francisco, CA 94123",37.7983235,-122.4360123,10/1/21 4:08,Bay Area,,3
+Nonesuch,Somewhere New!!!,Fine Dining,Dinner,$100+,,,,A tasting menu exploring Oklahoma ingredients,http://www.nonesuchokc.com/,,,"803 N Hudson Ave
 Oklahoma City, OK 73102",35.4753589,-97.5195628,10/2/21 1:25,OKC,,3
-n/naka,Somewhere New!!!,"Fine Dining, Japanese",Dinner,$100.00 ,,,,Known for keeping extensive customer notes and focusing on the experience for the diner. Featured on Chef's Table,http://www.n-naka.com/,,,"3455 Overland Ave
+n/naka,Somewhere New!!!,"Fine Dining, Japanese",Dinner,$100+,,,,Known for keeping extensive customer notes and focusing on the experience for the diner. Featured on Chef's Table,http://www.n-naka.com/,,,"3455 Overland Ave
 Los Angeles, CA 90034",34.0251111,-118.4121799,10/2/21 2:19,Los Angeles,,3
 Osteria Mozza,Somewhere New!!!,Italian,Dinner,$50-$100,,,Outdoor Dining Available,A Nancy Silverton restaurant focused on local ingredients with a rustic Italian style,https://la.osteriamozza.com/,,,"6602 Melrose Ave
 Los Angeles, CA 90038",34.0832419,-118.3389634,10/2/21 2:22,Los Angeles,,3
-Central,Somewhere New!!!,"Fine Dining, Peruvian",Dinner,$100.00 ,,,,A restaurant focused on highlighting the ingredients of Peru. ,http://www.centralrestaurante.com.pe/,,,"Calle Santa Isabel 376, Miraflores
+Central,Somewhere New!!!,"Fine Dining, Peruvian",Dinner,$100+,,,,A restaurant focused on highlighting the ingredients of Peru. ,http://www.centralrestaurante.com.pe/,,,"Calle Santa Isabel 376, Miraflores
 Lima 15074, Peru",-12.1327962,-77.027815,10/2/21 2:27,Lima,,3
-Blue Hill at Stone Barns,Somewhere New!!!,"Fine Dining, Modern/Contemporary",Dinner,$100.00 ,,,Organic-grown food explicitly used,"One of the leaders in the farm-to-table ideology, Dan Barber's restaurant is focused on eating practices that promote biodiversity, which in turn improves the flavor.",https://www.bluehillfarm.com/,,,"630 Bedford Rd, Tarrytown, NY 10591",41.1038673,-73.8291512,10/2/21 3:11,NYC,,3
+Blue Hill at Stone Barns,Somewhere New!!!,"Fine Dining, Modern/Contemporary",Dinner,$100+,,,Organic-grown food explicitly used,"One of the leaders in the farm-to-table ideology, Dan Barber's restaurant is focused on eating practices that promote biodiversity, which in turn improves the flavor.",https://www.bluehillfarm.com/,,,"630 Bedford Rd, Tarrytown, NY 10591",41.1038673,-73.8291512,10/2/21 3:11,NYC,,3
 Nix Taco,Somewhere New,Mexican,"Lunch, Dinner",$15-$30,,,Organic-grown food explicitly used,A farm-to-table focused taqueria,https://www.nixta.co/,,,"1805 Cirby Way #12
 Roseville, CA 95661",38.7297802,-121.2565887,10/2/21 4:31,Bay Area,No,0
 South Philly Barbacoa,Somewhere New!!!,Mexican,"Lunch, Dinner",$07-$15,,,,Cristina Martínez's taco shop featured on Chef's Table,,,,"1140 S 9th St, Philadelphia, PA 19147",39.9353532,-75.1588019,10/2/21 4:35,Philadelphia,No,3
@@ -966,29 +966,29 @@ Milk Bar- Melrose,Somewhere New!!!,"Bakery, Frozen Dessert","Dessert, Specialty"
 Los Angeles, CA 90046",34.0831844,-118.3452905,10/2/21 5:06,Los Angeles,No,3
 Ivan Ramen,Somewhere New!!!,"Japanese, Ramen","Lunch, Dinner",$15-$30,,,,Ivan Orkin's ramen restaurant in NYC. He's a NY native who mastered ramen in Japan and brought his skills back to Manhattan.,http://www.ivanramen.com/en/new-york/,,,"25 Clinton St
 New York, NY 10002",40.7205547,-73.9845345,10/2/21 5:10,NYC,No,3
-D.O.M.,Somewhere New!!!,"Fine Dining, Brazilian",Dinner,$100.00 ,,,,"Chef Alex Atala's restaurant focuses on the ingredients of Brazil, which was featured in Chef's Table.",http://domrestaurante.com.br/,,,"R. Barão de Capanema, 549 - Jardins, São Paulo - SP
+D.O.M.,Somewhere New!!!,"Fine Dining, Brazilian",Dinner,$100+,,,,"Chef Alex Atala's restaurant focuses on the ingredients of Brazil, which was featured in Chef's Table.",http://domrestaurante.com.br/,,,"R. Barão de Capanema, 549 - Jardins, São Paulo - SP
 01411-011, Brazil",-23.5663224,-46.6675722,10/2/21 5:13,São Paulo,No,3
-Tickets,Somewhere New!!!,"Fine Dining, Spanish, Tapas",Dinner,$100.00 ,,,,Albert Adrià's restaurant that features dishes that force you to separate appearance from flavor,https://elbarri.com/,,,"Av. del Paraŀlel, 164
+Tickets,Somewhere New!!!,"Fine Dining, Spanish, Tapas",Dinner,$100+,,,,Albert Adrià's restaurant that features dishes that force you to separate appearance from flavor,https://elbarri.com/,,,"Av. del Paraŀlel, 164
 08015 Barcelona, Spain",41.3751866,2.1568773,10/2/21 5:17,Barcelona,No,3
-Manresa,Somewhere New!!!,Fine Dining,Dinner,$100.00 ,,,Organic-grown food explicitly used,David Kinch's farm-to-table dining experience,https://www.manresarestaurant.com/location/manresa/,,,"320 Village Lane,
+Manresa,Somewhere New!!!,Fine Dining,Dinner,$100+,,,Organic-grown food explicitly used,David Kinch's farm-to-table dining experience,https://www.manresarestaurant.com/location/manresa/,,,"320 Village Lane,
 Los Gatos, CA 95030",37.2273967,-121.980769,10/2/21 5:23,Bay Area,No,3
 Manresa Bread,Reviewed,"Bakery, Bread",Specialty,$07-$15,"Whole wheat bread is a good sourdough; not a yeast bread. Some good sweet pastries, but not much savory",,Organic-grown food explicitly used,"Associated with Manresa (restaurant), this is a bakery focused on using local flours",https://www.manresabread.com/,,6,"271 State St.
 Los Altos, CA",37.3791134,-122.1169609,10/2/21 5:29,Bay Area,No,3
-El Celler de Can Roca,Somewhere New!!!,Fine Dining,Dinner,$100.00 ,,,,Distilled dirt! The Roca family's restaurant that has topped the World's Best list multiple times.,http://cellercanroca.com/,,,"Carrer de Can Sunyer, 48
+El Celler de Can Roca,Somewhere New!!!,Fine Dining,Dinner,$100+,,,,Distilled dirt! The Roca family's restaurant that has topped the World's Best list multiple times.,http://cellercanroca.com/,,,"Carrer de Can Sunyer, 48
 17007 Girona, Spain",41.9933364,2.8079808,10/2/21 5:32,Girona,No,3
-Osteria Francescana,Somewhere New!!!,Italian,Dinner,$100.00 ,,,,Massimo Bottura's modern Italian restaurant that looks to make the most of the local ingredients of the region.,http://www.osteriafrancescana.it/,,,"Via Stella, 22
+Osteria Francescana,Somewhere New!!!,Italian,Dinner,$100+,,,,Massimo Bottura's modern Italian restaurant that looks to make the most of the local ingredients of the region.,http://www.osteriafrancescana.it/,,,"Via Stella, 22
 41121 Modena MO, Italy",44.6447946,10.9215708,10/2/21 5:35,Modena,No,3
 Caffè Sicilia,Somewhere New!!!,Cafe,"Breakfast, Lunch, Coffee",$10-$20,,,Outdoor Dining Available,The granita and cannoli are what I want to try if I get to,http://www.caffesicilia.it/,,,"Corso Vittorio Emanuele, 125
 96017 Noto SR, Italy",36.891001,15.0696922,10/2/21 5:39,N/A,No,3
 Ciya Kebap,Somewhere New!!!,Turkish,"Lunch, Dinner",$10-$20,,,,Musa Dağdeviren's homage to the many regional cuisines of Turkey,http://www.ciya.com.tr/,,,"32, Caferağa Mahallesi, Güneşli Bahçe Sk.
 34710 Kadıköy/İstanbul, Turkey",40.9893252,29.0243967,10/2/21 5:42,Istanbul,No,3
-Bo.lan,Somewhere New!!!,"Thai, Fine Dining",Dinner,$100.00 ,,,,,http://www.bolan.co.th/,,,"24 Sukhumvit 53 Alley, Khwaeng Khlong Tan Nuea, Khet Watthana
+Bo.lan,Somewhere New!!!,"Thai, Fine Dining",Dinner,$100+,,,,,http://www.bolan.co.th/,,,"24 Sukhumvit 53 Alley, Khwaeng Khlong Tan Nuea, Khet Watthana
 Krung Thep Maha Nakhon 10110, Thailand",13.7261006,100.5783816,10/2/21 5:44,Bangkok,No,3
 Room 4 Dessert,Somewhere New!!!,Dessert,Dessert,$50-$100,,,,Will Goldfarb's dessert-only restaurant,http://www.room4dessert.asia/,,,"Jl. Raya Sanggingan, Kedewatan, Ubud, Kabupaten Gianyar
 Bali 80561, Indonesia",-8.4912924,115.253513,10/2/21 5:46,Bali,No,3
-Attica,Somewhere New!!!,"Australian, Fine Dining",Dinner,$100.00 ,,,,Ben Shewry's exploration of native Australian ingredients,http://www.attica.com.au/,,,"74 Glen Eira Rd
+Attica,Somewhere New!!!,"Australian, Fine Dining",Dinner,$100+,,,,Ben Shewry's exploration of native Australian ingredients,http://www.attica.com.au/,,,"74 Glen Eira Rd
 Ripponlea VIC 3185, Australia",-37.8770079,144.9972755,10/2/21 5:47,Melbourne,No,3
-Single Thread Farms,Somewhere New!!,Fine Dining,Dinner,$100.00 ,,,Organic-grown food explicitly used,A farm-to-table restaurant that is 7 miles from the farm itself,http://singlethreadfarms.com/,,,"131 North St, Healdsburg, CA 95448",38.6122975,-122.8695811,10/2/21 5:53,Bay Area,No,2
+Single Thread Farms,Somewhere New!!,Fine Dining,Dinner,$100+,,,Organic-grown food explicitly used,A farm-to-table restaurant that is 7 miles from the farm itself,http://singlethreadfarms.com/,,,"131 North St, Healdsburg, CA 95448",38.6122975,-122.8695811,10/2/21 5:53,Bay Area,No,2
 Bowl of Pho,Reviewed,Vietnamese,"Lunch, Dinner",$07-$15,"The Spicy Beef Noodles have a hint of spice, but are great if you want a variety of beef cuts. The broth was a bit oily, but the Pho Ga broth was much lighter, so it was most likely from the beef. ",,Outdoor Dining Available,,bowlofphosunnyvale.com,"TRASHY takeout (styrofoam packaging; excessive packaging used; etc.), Good for eat-in (No excessive trash)",7,"1627 Hollenbeck Ave, Sunnyvale, CA 94087",37.3392872,-122.0425466,10/11/21 1:54,Bay Area,Yes,0
 El Maguey,Reviewed,Mexican,"Lunch, Dinner",$07-$15,The tacos are tasty and are a good value for the area,Double check that your order is right after ordering. Have had a few messed up orders,,,,TRASHY takeout (styrofoam packaging; excessive packaging used; etc.),6,"1065 Holly St D, San Carlos, CA 94070",37.5092826,-122.2604753,10/13/21 14:36,Bay Area,Yes,0
 Sarah’s Latin Taste,Reviewed,Argentinian,Lunch,$10-$20,"The eggplant sandwich wasn’t the most flavorful, but the fries are something to make sure you get for their seasoning!",,Outdoor Dining Available,A lunch food truck with small indoor dining area as well,sarahslatintaste.com,Good for eat-in (No excessive trash),6,"765 Old County Rd unit B, San Carlos, CA 94070",37.5057058,-122.2568367,10/13/21 14:40,Bay Area,Yes,0

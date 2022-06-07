@@ -1,175 +1,211 @@
 <!DOCTYPE html>
 <html lang='en'>
-  <head>
-    <title>Food Map</title>
+<head>
+  <title>Food Map</title>
 
-    <meta charset='utf-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta content='Food Map' name='Will Harvey'>
+  <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta content='Food Map' name='Will Harvey'>
 
-    <!-- Facebook metadata -->
-    <meta content="Food Map" property="og:site_name">
-    <meta content="Food Map" property="og:title">
-    <!-- <meta content="website" property="og:type"> -->
-    <!-- <meta content="Find somewhere to get a bite to eat or drink!" property="og:description"> -->
-    <!-- <meta content="https://searchable-map-template-csv.netlify.com/" property="og:url"> -->
-    <!-- <meta content="https://searchable-map-template-csv.netlify.com/img/screenshot.jpg" property="og:image"> -->
+  <!-- Facebook metadata -->
+  <meta content="Food Map" property="og:site_name">
+  <meta content="Food Map" property="og:title">
+  <!-- <meta content="website" property="og:type"> -->
+  <!-- <meta content="Find somewhere to get a bite to eat or drink!" property="og:description"> -->
+  <!-- <meta content="https://searchable-map-template-csv.netlify.com/" property="og:url"> -->
+  <!-- <meta content="https://searchable-map-template-csv.netlify.com/img/screenshot.jpg" property="og:image"> -->
 
-    <!-- Twitter metadata -->
-    <!-- <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@DataMadeCo">
-    <meta name="twitter:creator" content="@DataMadeCo">
-    <meta name="twitter:title" content="Food Map">
-    <meta name="twitter:url" content="https://searchable-map-template-csv.netlify.com/">
-    <meta name="twitter:description" content="Find somewhere to get a bite to eat or drink!">
-    <meta name="twitter:image:src" content="https://searchable-map-template-csv.netlify.com/img/screenshot.jpg"> -->
+  <!-- Twitter metadata -->
+  <!-- <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@DataMadeCo">
+  <meta name="twitter:creator" content="@DataMadeCo">
+  <meta name="twitter:title" content="Food Map">
+  <meta name="twitter:url" content="https://searchable-map-template-csv.netlify.com/">
+  <meta name="twitter:description" content="Find somewhere to get a bite to eat or drink!">
+  <meta name="twitter:image:src" content="https://searchable-map-template-csv.netlify.com/img/screenshot.jpg"> -->
 
-    <!-- Styles -->
-    <!-- Bootstrap cssS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="css/custom.css"/>
+  <!-- Styles -->
+  <!-- Bootstrap cssS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="css/custom.css"/>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="lib/jquery-3.3.1.min.js"></script>
-    <script src="lib/popper.min.js"></script>
-    <script src="lib/bootstrap.min.js"></script>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="lib/jquery-3.3.1.min.js"></script>
+  <script src="lib/popper.min.js"></script>
+  <script src="lib/bootstrap.min.js"></script>
 
-    <script src="lib/ejs.min.js"></script>
-    <script src="lib/jquery.address.js"></script>
-    <script src="lib/jquery.csv.min.js"></script>
-    <script src="lib/moment.js"></script>
-    <script src="lib/geojson.min.js"></script>
-    <script src="js/csv-to-geojson.js"></script>
+  <script src="lib/ejs.min.js"></script>
+  <script src="lib/jquery.address.js"></script>
+  <script src="lib/jquery.csv.min.js"></script>
+  <script src="lib/moment.js"></script>
+  <script src="lib/geojson.min.js"></script>
+  <script src="js/csv-to-geojson.js"></script>
 
-    <!-- Leaflet and Google -->
-    <link rel="stylesheet" href="css/leaflet.css"/>
-    <script src="lib/leaflet.js"></script>
-    <script src='lib/turf.min.js'></script>
-    <script src="https://maps.google.com/maps/api/js?libraries=places&key=AIzaSyC4PFgbIb3gaZfqX04NfIUm6yDXvqAEU94"></script>
-    <script src="lib/Leaflet.GoogleMutant.js" ></script>
-    <script src="lib/leaflet-color-markers.js" ></script>
+  <!-- Leaflet and Google -->
+  <link rel="stylesheet" href="css/leaflet.css"/>
+  <script src="lib/leaflet.js"></script>
+  <script src='lib/turf.min.js'></script>
+  <script src="https://maps.google.com/maps/api/js?libraries=places&key=AIzaSyC4PFgbIb3gaZfqX04NfIUm6yDXvqAEU94"></script>
+  <script src="lib/Leaflet.GoogleMutant.js" ></script>
+  <script src="lib/leaflet-color-markers.js" ></script>
 
-    <!-- Custom JavaScript -->
-    <script src="js/searchable_map_lib.js"></script>
-    <script src="js/analytics_lib.js"></script>
+  <!-- Custom JavaScript -->
+  <script src="js/searchable_map_lib.js"></script>
+  <script src="js/analytics_lib.js"></script>
 
-  </head>
-  <body>
+</head>
+<body>
 
-    <nav class="navbar navbar-expand-md navbar-light mb-2">
-      <a class="navbar-brand" href="index.html">
-        Food Map
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+  <nav class="navbar navbar-expand-md navbar-light mb-2">
+    <a class="navbar-brand" href="index.html">
+      Food Map
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-      <div class="collapse navbar-collapse mr-auto" id="navbarsExampleDefault">
-        <ul class="navbar-nav ml-auto">
-          <li class='nav-item'>
-            <a class="nav-link active" href="index.html"><i class="fa fa-map-marker" aria-hidden="true"></i> Map</a>
-          </li>
-          <li class='nav-item'>
-            <a class="nav-link" href="about.html"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <div class="collapse navbar-collapse mr-auto" id="navbarsExampleDefault">
+      <ul class="navbar-nav ml-auto">
+        <li class='nav-item'>
+          <a class="nav-link active" href="index.html"><i class="fa fa-map-marker" aria-hidden="true"></i> Map</a>
+        </li>
+        <li class='nav-item'>
+          <a class="nav-link" href="about.html"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-    <main role="main" class="container-fluid">
+  <main role="main" class="container-fluid">
 
-      <div class='row'>
-        <div class="col-md-4">
-          <p>Find somewhere to get a bite to eat or drink! <br />
-            <!-- <a href='/about.html'>Read more &raquo;</a> -->
-          </p>
+    <div class='row'>
+      <div class="col-md-4">
+        <p>Find somewhere to get a bite to eat or drink! <br />
+          <!-- <a href='/about.html'>Read more &raquo;</a> -->
+        </p>
 
-          <div class="card bg-light">
-            <div class="card-body">
-              <div class='row'>
-                <div class="col-md-8">
-                  <div class="form-group">
-                      Near an address
-                      <input class='form-control' id='search-address' placeholder='Enter an address' type='text'>
-                  </div>
-                </div>
-
-                <div class="col-md-4">
-                  <div class='form-group'>
-                      Within
-                      <select id='search-radius' class='form-control'>
-                        <option value='1610'>1 mile</option>
-                        <option value='8050'>5 miles</option>
-                        <option value='24150'>15 miles</option>
-                        <option value='80500'>50 miles</option>
-                      </select>
-                  </div>
+        <div class="card bg-light">
+          <div class="card-body">
+            <div class='row'>
+              <div class="col-md-8">
+                <div class="form-group">
+                  Near an address
+                  <input class='form-control' id='search-address' placeholder='Enter an address' type='text'>
                 </div>
               </div>
 
-              <div class='row'>
-                <div class="col-md-12">
-                  <div class="form-group">
-                      Search by name
-                      <input class='form-control' id='search-name' placeholder='' type='text'>
-                  </div>
+              <div class="col-md-4">
+                <div class='form-group'>
+                  Within
+                  <select id='search-radius' class='form-control'>
+                    <option value='1610'>1 mile</option>
+                    <option value='8050'>5 miles</option>
+                    <option value='24150'>15 miles</option>
+                    <option value='80500'>50 miles</option>
+                    <option value='805000'>500 miles</option>
+                  </select>
                 </div>
-              </div>
-
-              <button class='btn btn-primary' id="btnSearch"><i class='fa fa-search'></i> Search</button>
-              <a href="index.html" class='btn btn-secondary' id="btnReset" title="Reset"><i class="fa fa-repeat" aria-hidden="true"></i> Reset</a>
-              <button class='btn btn-dark' id='btnViewMode' title='Change view'><i class='fa fa-list'></i> List view</button>
-
               </div>
             </div>
-          </div>
 
-          <div class='col-md-8'>
-            <div id='mapCanvas' style="display: block; height: 1000px;"></div>
-            <div id="listCanvas" style="display: none">
-              <h2 class='list-header hidden-xs'>Search results <small id='list-result-count'></small></h2>
-
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">Restaurant</th>
-                      <th scope="col">Address</th>
-                      <th scope="col">Rating</th>
-                      <th scope="col">Type</th>
-                      <th scope="col">Meals Served</th>
-                      <th scope="col">Price</th>
-                    </tr>
-                  </thead>
-                  <tbody id='results-list'></tbody>
-                </table>
+            <div class='row'>
+              <div class="col-md-12">
+                <div class="form-group">
+                  Search by name
+                  <input class='form-control' id='search-name' placeholder='' type='text'>
+                </div>
+                <div class="form-group">
+                  <label for="mealSelect">What Meal?</label>
+                  <select multiple class="form-control" id="mealSelect" size="2">
+                    <option>Breakfast</option>
+                    <option>Lunch</option>
+                    <option>Dinner</option>
+                    <option>Coffee</option>
+                    <option>Specialty</option>
+                    <option>Dessert</option>
+                    <option>Brunch</option>
+                    <option>Late Night</option>
+                  </select>
+                </div>
+                <div class="form-inline">
+                  <label class="form-control-label pr-5 mb-3">Price per Person</label>
+                  <select class="form-control mb-3" id="price-range">
+                    <option>Any</option>
+                    <option>$0-$10</option>
+                    <option>$07-$15</option>
+                    <option>$10-$20</option>
+                    <option>$15-$30</option>
+                    <option>$20-$35</option>
+                    <option>$25-$50</option>
+                    <option>$50-$100</option>
+                    <option>$100+</option>
+                  </select>
+                </div>
+                <div class="form-inline">
+                  <label class="form-control-label pr-3 mb-3">Filter by Ratings?</label>
+                  <select class="form-control mb-3" id="rating-filter">
+                    <option>Everywhere</option>
+                    <option>Top Rated</option>
+                    <option>Somewhere New</option>
+                  </select>
+                </div>
               </div>
             </div>
-            <!-- <p class='float-right'>Based on <a href='https://github.com/datamade/searchable-map-template-csv' target='_blank'>Food Map</a> by <a href='https://derekeder.com/' target='_blank'>Derek Eder</a> and <a href='https://datamade.us/' target='_blank'>DataMade</a></p> -->
+
+            <button class='btn btn-primary' id="btnSearch"><i class='fa fa-search'></i> Search</button>
+            <a href="index.html" class='btn btn-secondary' id="btnReset" title="Reset"><i class="fa fa-repeat" aria-hidden="true"></i> Reset</a>
+            <button class='btn btn-dark' id='btnViewMode' title='Change view'><i class='fa fa-list'></i> List view</button>
+
           </div>
         </div>
+      </div>
 
-        <div class="modal fade" id="modal-pop" tabindex="-1" role="dialog">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-body">
-                <div class="container-fluid bd-example-row">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true"></i></span></button>
-                      <div id="modal-main"></div>
-                    </div>
-                  </div>
+      <div class='col-md-8'>
+        <div id='mapCanvas' style="display: block; height: 1000px;"></div>
+        <div id="listCanvas" style="display: none">
+          <h2 class='list-header hidden-xs'>Search results <small id='list-result-count'></small></h2>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Restaurant</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Rating</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Meals Served</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+              <tbody id='results-list'></tbody>
+            </table>
+          </div>
+        </div>
+        <!-- <p class='float-right'>Based on <a href='https://github.com/datamade/searchable-map-template-csv' target='_blank'>Food Map</a> by <a href='https://derekeder.com/' target='_blank'>Derek Eder</a> and <a href='https://datamade.us/' target='_blank'>DataMade</a></p> -->
+      </div>
+    </div>
+
+    <div class="modal fade" id="modal-pop" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="container-fluid bd-example-row">
+              <div class="row">
+                <div class="col-md-12">
+                  <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true"></i></span></button>
+                  <div id="modal-main"></div>
                 </div>
               </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
+            </div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 
-        <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/map.js"></script>
 
-    </main>
-  </body>
+  </main>
+</body>
 </html>

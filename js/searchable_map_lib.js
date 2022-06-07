@@ -263,12 +263,26 @@ var SearchableMapLib = {
     }
 
     //-----custom filters-----
+    var acceptable_price = $("#price-range").val();
+    if (acceptable_price != "Any") {
+      SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
+          return r.properties["Expected Price"].indexOf(acceptable_price) > -1;
+        });
+    }
 
+    // var rating_filter = $("#rating-filter").val();
+    // if (rating_filter == "Top Rated") {
+    // //   SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
+    // //       return r.properties["Expected Price"].indexOf(acceptable_price) > -1;
+    // //     });
+    // // } else if (rating_filter == "Top Rated") {
+    // //
+    // }
     //-----name search filter-----
     var name_search = $("#search-name").val().replace("'", "\\'");
     if (name_search != '') {
       SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
-          return r.properties["Facility Name"].toLowerCase().indexOf(name_search.toLowerCase()) > -1;
+          return r.properties["Name"].toLowerCase().indexOf(name_search.toLowerCase()) > -1;
         });
     }
     //-----end name search filter-----
@@ -308,11 +322,11 @@ var SearchableMapLib = {
 
   setZoom: function() {
     var zoom = '';
-    if (SearchableMapLib.radius >= 8050) zoom = 12; // 5 miles
-    else if (SearchableMapLib.radius >= 3220) zoom = 13; // 2 miles
-    else if (SearchableMapLib.radius >= 1610) zoom = 14; // 1 mile
-    else if (SearchableMapLib.radius >= 805) zoom = 15; // 1/2 mile
-    else if (SearchableMapLib.radius >= 400) zoom = 16; // 1/4 mile
+    if (SearchableMapLib.radius >= 805000) zoom = 5; // 500 miles
+    else if (SearchableMapLib.radius >= 80500) zoom = 8; // 50 miles
+    else if (SearchableMapLib.radius >= 24150) zoom = 10; // 15 mile
+    else if (SearchableMapLib.radius >= 8050) zoom = 12; // 5 miles
+    else if (SearchableMapLib.radius >= 1610) zoom = 14; // 1å mile
     else zoom = 16;
 
     SearchableMapLib.map.setView(new L.LatLng( SearchableMapLib.currentPinpoint[0], SearchableMapLib.currentPinpoint[1] ), zoom)
