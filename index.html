@@ -52,8 +52,14 @@
   <script src="lib/leaflet-color-markers.js" ></script>
 
   <!-- Custom JavaScript -->
+
   <script src="js/searchable_map_lib.js"></script>
   <script src="js/analytics_lib.js"></script>
+
+  <!-- Google API -->
+  <script src="js/read_data.js"></script>
+  <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+  <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
 
 </head>
 <body>
