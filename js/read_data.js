@@ -2,6 +2,8 @@
 const API_KEY = 'AIzaSyC4PFgbIb3gaZfqX04NfIUm6yDXvqAEU94';
 const SHEET_ID = '1dfrB_p_qotu9qzNWk1Na8w1OreMNM8qykql5NLnJhIw';
 const RANGE = 'Food'
+let data_as_json;
+let data_from_api;
 
 function getDataFromGoogleSheet() {
   const Http = new XMLHttpRequest();
@@ -14,9 +16,11 @@ function getDataFromGoogleSheet() {
 Http.open("GET", url);
 Http.send();
 
-Http.onreadystatechange = (e) => {
+Http.onload = (e) => {
   // console.log(Http.responseText)
   data_from_api = Http.responseText;
+  data_as_json = JSON.parse(data_from_api);
+  prepareMap();
 }
 }
 

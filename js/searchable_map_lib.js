@@ -1,5 +1,5 @@
 var SearchableMapLib = SearchableMapLib || {};
-var SearchableMapLib = {
+SearchableMapLib = {
 
   // parameters to be defined on initialize()
   map_centroid: [],
@@ -119,12 +119,17 @@ var SearchableMapLib = {
           if (typeof data == 'string')
             SearchableMapLib.geojsonData = JSON.parse(data);
           else
-            SearchableMapLib.geojsonData = data
+            SearchableMapLib.geojsonData = data;
         }
         else if (SearchableMapLib.fileType == 'csv' ){
           // convert CSV
           if (SearchableMapLib.debug) console.log('converting to csv');
-          SearchableMapLib.geojsonData = convertCsvToGeojson(data)
+          SearchableMapLib.geojsonData = convertCsvToGeojson(data, false);
+        }
+        else if (SearchableMapLib.fileType == 'gsheet' ){
+          // convert CSV
+          if (SearchableMapLib.debug) console.log('gsheet json to geojson');
+          SearchableMapLib.geojsonData = convertCsvToGeojson(data_as_json.values, true);
         }
         else {
           // error!
@@ -175,7 +180,9 @@ var SearchableMapLib = {
     else { //search without geocoding callback
       SearchableMapLib.map.setView(new L.LatLng( SearchableMapLib.map_centroid[0], SearchableMapLib.map_centroid[1] ), SearchableMapLib.defaultZoom)
       SearchableMapLib.createSQL(); // Must call create SQL before setting parameters.
+      console.log("hhh");
       SearchableMapLib.renderMap();
+      console.log("hhhh");
       SearchableMapLib.renderList();
       SearchableMapLib.getResults();
     }
@@ -308,7 +315,7 @@ var SearchableMapLib = {
     //-----end name search filter-----
 
     // -----end of custom filters-----
-
+    console.log(SearchableMapLib.currentResults)
     SearchableMapLib.currentResultsLayer = L.geoJSON(SearchableMapLib.currentResults, {
         pointToLayer: function (feature, latlng) {
           return L.marker(latlng, {icon: SearchableMapLib.getIcon(feature.properties["Type"])} );
@@ -317,7 +324,6 @@ var SearchableMapLib = {
       }
     );
 
-    //messy - clean this up later
     function onEachFeature(feature, layer) {
       layer.on({
         mouseover: hoverFeature,

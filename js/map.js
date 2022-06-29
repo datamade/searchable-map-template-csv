@@ -1,3 +1,4 @@
+function prepareMap(){
 $(window).resize(function () {
   var h = $(window).height(),
     offsetTop = 125; // Calculate the top offset
@@ -9,13 +10,13 @@ $(function() {
 
   SearchableMapLib.initialize({
     filePath: 'data/ReviewsFood.csv',
-    fileType: 'csv',
+    fileType: 'gsheet',
     recordName: 'Marker',
     recordNamePlural: 'Choices',
     map_centroid: [37.6604, -121.8758],
     defaultZoom:  9,
     defaultRadius: 1610,
-    debug: false,
+    debug: true,
   });
 
   var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search-address'));
@@ -68,6 +69,7 @@ $(function() {
   });
 
 });
+}
 
 function formatAddress(prop) {
     return prop["Street1"] + " " + prop["Street2"] + " " + prop["City"] + " " + prop["State"];
