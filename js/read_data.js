@@ -20,9 +20,15 @@ Http.onload = (e) => {
   // console.log(Http.responseText)
   data_from_api = Http.responseText;
   data_as_json = JSON.parse(data_from_api);
+  // this makes sure that the map function doesn't run before the data has been acquired
   prepareMap();
 }
 }
 
 // CODE TO RUN
-getDataFromGoogleSheet();
+if (dataType != 'gsheet') {
+  prepareMap();
+} else {
+  getDataFromGoogleSheet();
+
+}

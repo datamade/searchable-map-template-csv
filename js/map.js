@@ -1,3 +1,10 @@
+let dataType = 'gsheet';
+let dataSource = '';
+// Option if you want to use a local csv instead
+// let dataType = 'csv';
+// let dataSource = 'data/ReviewsFood.csv';
+
+
 function prepareMap(){
 $(window).resize(function () {
   var h = $(window).height(),
@@ -9,11 +16,8 @@ $(window).resize(function () {
 $(function() {
 
   SearchableMapLib.initialize({
-    // commented out file path in case google sheet is lost,
-    // but nothing is needed for a sheet
-    // filePath: 'data/ReviewsFood.csv',
-    filePath: '',
-    fileType: 'gsheet',
+    filePath: dataSource,
+    fileType: dataType,
     recordName: 'Marker', // to complete the phrase: "Hover over a _____"
     recordNamePlural: 'Choices', // to complete the phrase: "## ____ Found"
     map_centroid: [37.6604, -121.8758], // where does the map start at
