@@ -1,5 +1,4 @@
-var SearchableMapLib = SearchableMapLib || {};
-SearchableMapLib = {
+var SearchableMapLib = {
 
   // parameters to be defined on initialize()
   map_centroid: [],
@@ -267,7 +266,7 @@ SearchableMapLib = {
         }
     }
 
-    //-----custom filters-----
+    //-----price filter-----
     var acceptable_price = $("#price-range").val();
     if (acceptable_price != "Any") {
       SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
@@ -275,6 +274,7 @@ SearchableMapLib = {
         });
     }
 
+    // -----rating filter-----
     var rating_filter = $("#rating-filter").val();
     if (rating_filter == "Top Rated") {
       SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
@@ -287,6 +287,7 @@ SearchableMapLib = {
         });
     }
 
+    // -----meal filter-----
     var what_meal = $("#mealSelect").val();
     SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
       let return_bool = 0;
@@ -310,10 +311,7 @@ SearchableMapLib = {
           return r.properties["Name"].toLowerCase().indexOf(name_search.toLowerCase()) > -1;
         });
     }
-    //-----end name search filter-----
 
-    // -----end of custom filters-----
-    console.log(SearchableMapLib.currentResults)
     SearchableMapLib.currentResultsLayer = L.geoJSON(SearchableMapLib.currentResults, {
         pointToLayer: function (feature, latlng) {
           return L.marker(latlng, {icon: SearchableMapLib.getIcon(feature.properties["Type"])} );
