@@ -1,4 +1,3 @@
-var SearchableMapLib = SearchableMapLib || {};
 var SearchableMapLib = {
 
   // parameters to be defined on initialize()
@@ -119,12 +118,17 @@ var SearchableMapLib = {
           if (typeof data == 'string')
             SearchableMapLib.geojsonData = JSON.parse(data);
           else
-            SearchableMapLib.geojsonData = data
+            SearchableMapLib.geojsonData = data;
         }
         else if (SearchableMapLib.fileType == 'csv' ){
           // convert CSV
           if (SearchableMapLib.debug) console.log('converting to csv');
-          SearchableMapLib.geojsonData = convertCsvToGeojson(data)
+          SearchableMapLib.geojsonData = convertCsvToGeojson(data, false);
+        }
+        else if (SearchableMapLib.fileType == 'gsheet' ){
+          // convert gsheet values (which are in csv format) to geojson
+          if (SearchableMapLib.debug) console.log('gsheet json to geojson');
+          SearchableMapLib.geojsonData = convertCsvToGeojson(data_as_json.values, true);
         }
         else {
           // error!
@@ -262,7 +266,7 @@ var SearchableMapLib = {
         }
     }
 
-    //-----custom filters-----
+    //-----price filter-----
     var acceptable_price = $("#price-range").val();
     if (acceptable_price != "Any") {
       SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
@@ -270,6 +274,7 @@ var SearchableMapLib = {
         });
     }
 
+    // -----rating filter-----
     var rating_filter = $("#rating-filter").val();
     if (rating_filter == "Top Rated") {
       SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
@@ -282,6 +287,7 @@ var SearchableMapLib = {
         });
     }
 
+    // -----meal filter-----
     var what_meal = $("#mealSelect").val();
     SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
       let return_bool = 0;
@@ -305,9 +311,6 @@ var SearchableMapLib = {
           return r.properties["Name"].toLowerCase().indexOf(name_search.toLowerCase()) > -1;
         });
     }
-    //-----end name search filter-----
-
-    // -----end of custom filters-----
 
     SearchableMapLib.currentResultsLayer = L.geoJSON(SearchableMapLib.currentResults, {
         pointToLayer: function (feature, latlng) {
@@ -317,7 +320,6 @@ var SearchableMapLib = {
       }
     );
 
-    //messy - clean this up later
     function onEachFeature(feature, layer) {
       layer.on({
         mouseover: hoverFeature,

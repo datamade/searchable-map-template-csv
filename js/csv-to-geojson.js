@@ -1,5 +1,8 @@
-function convertCsvToGeojson(data) {
-  var csvObject = $.csv.toArrays(data);
+function convertCsvToGeojson(data, gsheet = false) {
+  var csvObject = data;
+  if (gsheet == false){
+    var csvObject = $.csv.toArrays(data);
+  }
   var latName = getColName(csvObject, ['lat', 'Lat', 'LAT', 'latitude', 'Latitude', 'LATITUDE']);
   var lonName = getColName(csvObject, ['lng', 'Lng', 'LNG', 'lon', 'Lon', 'LON', 'longitude', 'Longitude', 'LONGITUDE']);
 
