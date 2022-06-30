@@ -9,14 +9,17 @@ $(window).resize(function () {
 $(function() {
 
   SearchableMapLib.initialize({
-    filePath: 'data/ReviewsFood.csv',
+    // commented out file path in case google sheet is lost,
+    // but nothing is needed for a sheet
+    // filePath: 'data/ReviewsFood.csv',
+    filePath: '',
     fileType: 'gsheet',
-    recordName: 'Marker',
-    recordNamePlural: 'Choices',
-    map_centroid: [37.6604, -121.8758],
+    recordName: 'Marker', // to complete the phrase: "Hover over a _____"
+    recordNamePlural: 'Choices', // to complete the phrase: "## ____ Found"
+    map_centroid: [37.6604, -121.8758], // where does the map start at
     defaultZoom:  9,
     defaultRadius: 1610,
-    debug: true,
+    debug: false,
   });
 
   var autocomplete = new google.maps.places.Autocomplete(document.getElementById('search-address'));
