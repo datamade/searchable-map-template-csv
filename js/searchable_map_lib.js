@@ -126,7 +126,7 @@ var SearchableMapLib = {
           SearchableMapLib.geojsonData = convertCsvToGeojson(data, false);
         }
         else if (SearchableMapLib.fileType == 'gsheet' ){
-          // convert CSV
+          // convert gsheet values (which are in csv format) to geojson
           if (SearchableMapLib.debug) console.log('gsheet json to geojson');
           SearchableMapLib.geojsonData = convertCsvToGeojson(data_as_json.values, true);
         }
