@@ -180,9 +180,7 @@ SearchableMapLib = {
     else { //search without geocoding callback
       SearchableMapLib.map.setView(new L.LatLng( SearchableMapLib.map_centroid[0], SearchableMapLib.map_centroid[1] ), SearchableMapLib.defaultZoom)
       SearchableMapLib.createSQL(); // Must call create SQL before setting parameters.
-      console.log("hhh");
       SearchableMapLib.renderMap();
-      console.log("hhhh");
       SearchableMapLib.renderList();
       SearchableMapLib.getResults();
     }
