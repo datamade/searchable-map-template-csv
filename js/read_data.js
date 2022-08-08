@@ -8,8 +8,11 @@ SHEET_ID +
 RANGE +
 '?key=' +
 API_KEY;
+const geolocation_url = 'https://ipwho.is/';
+
 let data_as_json;
 let data_from_api;
+let locationAsJSON;
 
 /* This is a function that sends an http request to read the data from a google sheet.
   Once the data is read into the console, it calls prepareMap.
@@ -24,6 +27,21 @@ function getDataFromGoogleSheet() {
   Http.onload = (e) => {
     data_from_api = Http.responseText;
     data_as_json = JSON.parse(data_from_api);
+    // this makes sure that the data is acquired before making the map
+    // (and before getting location, but this is just to minimize complexity of
+    // waiting for two asynchronous calls)
+    getLocation();
+  }
+}
+
+function getLocation() {
+  const Http = new XMLHttpRequest();
+  Http.open("GET", geolocation_url);
+  Http.send();
+
+  Http.onload = (e) => {
+    locationResponse = Http.responseText;
+    locationAsJSON = JSON.parse(locationResponse);
     // this makes sure that the map function doesn't run before the data has been acquired
     prepareMap();
   }

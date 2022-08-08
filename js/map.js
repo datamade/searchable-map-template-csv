@@ -15,13 +15,18 @@ $(window).resize(function () {
 
 $(function() {
 
+  let userLocation = [42.35004879803404, -71.12608287847176];
+  if (locationAsJSON.success === true){
+    userLocation = [locationAsJSON.latitude, locationAsJSON.longitude];
+  }
+
   SearchableMapLib.initialize({
     filePath: dataSource,
     fileType: dataType,
     recordName: 'Marker', // to complete the phrase: "Hover over a _____"
     recordNamePlural: 'Choices', // to complete the phrase: "## ____ Found"
-    map_centroid: [37.6604, -121.8758], // where does the map start at
-    defaultZoom:  9,
+    map_centroid: userLocation, // where does the map start at
+    defaultZoom:  10,
     defaultRadius: 1610,
     debug: false,
   });
