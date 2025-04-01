@@ -2,7 +2,7 @@
 
 You want to put your data on a searchable, filterable map. Provide a comma separated file (CSV) and this free, open source template will do the rest. This template is a successor to Derek Eder's [Fusion Tables Map Template](https://github.com/derekeder/FusionTable-Map-Template).
 
-**[See the working demo &raquo;](https://searchable-map-template-csv.netlify.com/)**
+**[See the working demo &raquo;](https://searchable-map-template-csv.netlify.app/)**
 
 ![searchable-map-template-turf](https://raw.githubusercontent.com/datamade/searchable-map-template-turf/master/img/screenshot.jpg)
 
