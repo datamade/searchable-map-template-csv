@@ -265,7 +265,7 @@ var SearchableMapLib = {
     //-----custom filters-----
 
     //-----name search filter-----
-    var name_search = $("#search-name").val().replace("'", "\\'");
+    var name_search = $("#search-name").val().replace("'", "\'");
     if (name_search != '') {
       SearchableMapLib.currentResults.features = $.grep(SearchableMapLib.currentResults.features, function(r) {
           return r.properties["Facility Name"].toLowerCase().indexOf(name_search.toLowerCase()) > -1;
